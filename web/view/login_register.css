@@ -105,6 +105,9 @@ input[type="button"] {
 	display: inline-block;
 	float: right;
 	color: red;
+	font-size: 16px;
+	line-height: 21px;
+	margin-bottom: 5px;
 }
 
 /* 登陆按钮上侧、输入框下侧的一段文字 */

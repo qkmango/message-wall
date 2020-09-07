@@ -2,14 +2,13 @@ package entity;
 
 /**
  * @version 1.0
- * @Description: //TODO
- * <p>用户登陆信息实体类</p>
- * <p>用户登陆时email和password的信息封装在此类当中</p>
- * @className UserLoginInfo
+ * <p>用户登陆与注册信息实体类</p>
+ * <p>用户登陆和注册时email和password的信息封装在此类当中</p>
+ * @className UserLRInfo
  * @author: Mango
  * @date: 2020-09-05 22:48
  */
-public class UserLoginInfo {
+public class UserLRInfo {
     private String email;
     private String password;
 
@@ -17,10 +16,10 @@ public class UserLoginInfo {
         return email;
     }
 
-    public UserLoginInfo() {
+    public UserLRInfo() {
     }
 
-    public UserLoginInfo(String email, String password) {
+    public UserLRInfo(String email, String password) {
         this.email = email;
         this.password = password;
     }

@@ -1,10 +1,11 @@
 package test;
 
-import com.alibaba.druid.pool.DruidDataSource;
-import dataSource.DataSourceUtils;
+import Utils.JDBCUtils;
+import exception.UniqueException;
 
 import java.sql.Connection;
-import java.util.ResourceBundle;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 
 /**
@@ -17,20 +18,21 @@ import java.util.ResourceBundle;
  * @date: 2020-09-06 00:51
  */
 public class Test {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws UniqueException {
 
-        Connection c1 = DataSourceUtils.getConnection();
-        System.out.println(c1);
-        Connection c2 = DataSourceUtils.getConnection();
-        System.out.println(c2);
+        try {
 
-        c1.close();
+            Connection connection = JDBCUtils.getConnection();
+            PreparedStatement ps = connection.prepareStatement("insert into user(email,password) values(?,?)");
+            ps.setString(1,"1932101106@axhu.edu.cn");
+            ps.setString(2,"a123456");
 
-
-        c1 = DataSourceUtils.getConnection();
-        System.out.println(c1);
-
-
+            int i = ps.executeUpdate();
+            System.out.println("=============" + i);
+        } catch (SQLException throwables) {
+            // throwables.printStackTrace();
+            throw new UniqueException("数据库唯一性约束异常");
+        }
 
 
     }

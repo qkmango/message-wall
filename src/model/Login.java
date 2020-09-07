@@ -1,8 +1,7 @@
 package model;
 
-import dataSource.DataSourceUtils;
-import dataSource.JDBCUtils;
-import entity.UserLoginInfo;
+import Utils.JDBCUtils;
+import entity.UserLRInfo;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -23,10 +22,10 @@ public class Login {
     /**
      * 判断用户是否可登陆
      * <p>show 方法的详细说明第一行</p>
-     * @param userLoginInfo 用户登陆信息类
+     * @param userLRInfo 用户登陆信息类
      * @return 如果email和password匹配则返回true，否则返回false
      */
-    public static boolean canLogin(UserLoginInfo userLoginInfo) {
+    public static boolean canLogin(UserLRInfo userLRInfo) {
         //是否可登陆的标记flag
         boolean flag = false;
         Connection conn = null;
@@ -35,10 +34,11 @@ public class Login {
 
         try {
             //查询数据
-            conn = DataSourceUtils.getConnection();
+            conn = JDBCUtils.getConnection();
+            conn.setAutoCommit(true);
             ps = conn.prepareStatement("select email from user where email=? && password=?");
-            ps.setString(1,userLoginInfo.getEmail());
-            ps.setString(2,userLoginInfo.getPassword());
+            ps.setString(1, userLRInfo.getEmail());
+            ps.setString(2, userLRInfo.getPassword());
             rs = ps.executeQuery();
             //如果查询结果集中有一行数据说明email和password匹配，是否可登陆的表级改为true
             if (rs.next()) {

@@ -2,5 +2,9 @@
 input[type="button"] {
 	/* ======================== */
 	margin-top: 5px;
+}
 
+.error_tip>a {
+	text-decoration: none;
+	color: #0366d6;
 }

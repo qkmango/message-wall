@@ -1,7 +1,7 @@
 package controller;
 
 import entity.UserLRInfo;
-import model.Login;
+import model.Register;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,35 +13,27 @@ import java.io.IOException;
 /**
  * @version 1.0
  * @Description:
- * <p>登陆控制</p>
- * <p></p>
- * @className LoginServlet
+ * <p>用户注册控制层</p>
+ * <p>类详细介绍</p>
+ * @className RegisterCtrl
  * @author: Mango
- * @date: 2020-09-05 22:37
+ * @date: 2020-09-07 10:20
  */
 
-@WebServlet("/login")
-public class LoginCtrl extends HttpServlet {
-    /**
-     * 用户登陆控制层
-     * <p>用户登陆成功返回0，失败返回-1</p>
-     * @param request 请求
-     * @param response 响应
-     * @return void
-     */
+@WebServlet("/register")
+public class RegisterCtrl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        request.setCharacterEncoding("UTF-8");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
         UserLRInfo userLRInfo = new UserLRInfo(email, password);
 
         response.setContentType("text/plain;charset=UTF-8");
-
-        if(Login.canLogin(userLRInfo)){
+        int flag = Register.canRegister(userLRInfo);
+        if (flag == 1) {
             response.getWriter().write("1");
-
         } else {
             response.getWriter().write("-1");
         }

@@ -92,18 +92,41 @@ $(function() {
 	
 	passwordConfirm.onblur = function() {
 		checkPasswordEqul(password.value,passwordConfirm.value);
-		// alert()
 	}
 	
 	button.onclick = function() {
 		if(checkEmail(email.value) & 
 			(checkPassword(password.value) & checkPasswordEqul(password.value,passwordConfirm.value))) {
-			$("form").submit();
-			// alert()
+			canRegister(email.value, password.value);
 		}
 	}
-	
-	
+
+
+
+
+	//	AJAX 判断是否创建新用户成功
+	function canRegister(emailValue,passwordvalue) {
+		// 创建对象
+		var xhr = new XMLHttpRequest();
+		// 注册回调函数
+		// 当xhr对象的readyState的值发生改变时时执行此函数
+		xhr.onreadystatechange = function(){
+			// xhr.readyState == 4时说明服务端响应结束
+			if(xhr.readyState == 4) {
+				if (xhr.responseText == "1") {
+					alert("注册成功")
+				} else {
+					// alert("注册失败")
+					email_errorTip.innerHTML = "此Email已注册，可直接<a href='../login/'>登陆</a>";
+				}
+			}
+		}
+		xhr.open("POST","http://localhost:8080/MessageWall/register",true);
+		// 如果想要使用post提交数据,必须添加此行
+		xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		// 请求体中发送数据
+		xhr.send("email="+emailValue+"&password="+passwordvalue);
+	}
 	
 	
 	

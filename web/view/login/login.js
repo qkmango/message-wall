@@ -85,13 +85,12 @@ $(function() {
 		xhr.onreadystatechange = function(){
 			// xhr.readyState == 4时说明服务端响应结束
 			if(xhr.readyState == 4) {
-				if (xhr.responseText == "true") {
+				if (xhr.responseText == "1") {
 					alert("登陆成功")
 				} else {
-					alert("登陆失败")
+					email_errorTip.innerText = "用户名或密码错误";
+					password_errorTip.innerText = "用户名或密码错误";
 				}
-			} else {
-				alert("error")
 			}
 		}
 		xhr.open("POST","http://localhost:8080/MessageWall/login",true);

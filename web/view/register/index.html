@@ -3,9 +3,9 @@
 	<head>
 		<meta charset="utf-8">
 		<title>注册</title>
-		<link rel="stylesheet" type="text/css" href="register.css"/>
-		<link rel="stylesheet" type="text/css" href="../login_register.css"/>
 		<link rel="stylesheet" type="text/css" href="../reset.css"/>
+		<link rel="stylesheet" type="text/css" href="../login_register.css"/>
+		<link rel="stylesheet" type="text/css" href="register.css"/>
 		<link rel="icon" href="../imgs/title_icon/register.svg" sizes="32x32">
 	</head>
 	<body>
@@ -14,20 +14,20 @@
 			<span>Welcome to register</span>
 		</div>
 		<div class="main">
-			<form class="form" action="" method="post">
+			<form class="form" action="http://localhost:8080/MessageWall/register" method="post">
 				<div class="tip">电子邮件</div>
 				<span class="error_tip"></span>
 				<input type="email"/><br />
 				<div class="tip">密码</div>
 				<span class="error_tip"></span>
-				<input type="password"></input><br />
+				<input type="password"><br />
 				<div class="tip">确认密码</div>
 				<span class="error_tip"></span>
-				<input type="password"></input><br />
+				<input type="password"><br />
 				<span class="info_tip">确保电子邮件是合法的，并且密码的长度不小于6并且不大于20个字符，包括大写字母、小写字母、数字、下划线至少两种</span>
 				<input type="button" value="Register Now" />
 			</form>
-			<a class="register" href="../login/index.html">已有账户，立即登陆!</a>
+			<a class="register" href="../login/">已有账户，立即登陆!</a>
 		</div>
 	</body>
 	<script type="text/javascript" src="../jquery-3.5.1.js"></script>
