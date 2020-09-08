@@ -1,5 +1,6 @@
 package controller;
 
+import entity.UserInfo;
 import entity.UserLRInfo;
 import model.Login;
 
@@ -8,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
@@ -24,7 +26,7 @@ import java.io.IOException;
 public class LoginCtrl extends HttpServlet {
     /**
      * 用户登陆控制层
-     * <p>用户登陆成功返回0，失败返回-1</p>
+     * <p>用户登陆成功返回给前端跳转地址，失败返回个前端-1</p>
      * @param request 请求
      * @param response 响应
      * @return void
@@ -39,9 +41,12 @@ public class LoginCtrl extends HttpServlet {
 
         response.setContentType("text/plain;charset=UTF-8");
 
-        if(Login.canLogin(userLRInfo)){
-            response.getWriter().write("1");
+        UserInfo user = Login.canLogin(userLRInfo);
 
+        if(user != null){
+            response.getWriter().write("/MessageWall/messagewall");
+            HttpSession session = request.getSession(true);
+            session.setAttribute("user",user);
         } else {
             response.getWriter().write("-1");
         }

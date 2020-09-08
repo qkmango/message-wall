@@ -85,11 +85,11 @@ $(function() {
 		xhr.onreadystatechange = function(){
 			// xhr.readyState == 4时说明服务端响应结束
 			if(xhr.readyState == 4) {
-				if (xhr.responseText == "1") {
-					alert("登陆成功")
-				} else {
+				if (xhr.responseText == "-1") {
 					email_errorTip.innerText = "用户名或密码错误";
 					password_errorTip.innerText = "用户名或密码错误";
+				} else {
+					window.location = xhr.responseText;
 				}
 			}
 		}

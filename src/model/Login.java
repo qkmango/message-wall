@@ -1,6 +1,7 @@
 package model;
 
 import Utils.JDBCUtils;
+import entity.UserInfo;
 import entity.UserLRInfo;
 
 import java.sql.Connection;
@@ -21,13 +22,11 @@ public class Login {
 
     /**
      * 判断用户是否可登陆
-     * <p>show 方法的详细说明第一行</p>
+     * <p>查询数据库判断用户是否可登陆</p>
      * @param userLRInfo 用户登陆信息类
-     * @return 如果email和password匹配则返回true，否则返回false
+     * @return 如果email和password匹配则返回用户详细信息封装类UserInfo，否则返回null；
      */
-    public static boolean canLogin(UserLRInfo userLRInfo) {
-        //是否可登陆的标记flag
-        boolean flag = false;
+    public static UserInfo canLogin(UserLRInfo userLRInfo) {
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -36,22 +35,32 @@ public class Login {
             //查询数据
             conn = JDBCUtils.getConnection();
             conn.setAutoCommit(true);
-            ps = conn.prepareStatement("select email from user where email=? && password=?");
+            ps = conn.prepareStatement("select uid,email,password,nickname,sex from user where email=? && password=?");
             ps.setString(1, userLRInfo.getEmail());
             ps.setString(2, userLRInfo.getPassword());
             rs = ps.executeQuery();
             //如果查询结果集中有一行数据说明email和password匹配，是否可登陆的表级改为true
             if (rs.next()) {
-                flag = true;
+                int uid = rs.getInt("uid");
+                String email = rs.getString("email");
+                String password = rs.getString("password");
+                String nickname = rs.getString("nickname");
+                int sex = rs.getInt("sex");
+
+                UserInfo user = new UserInfo(uid,email,password,nickname,sex);
+
+                System.out.println(user.toString());
+                return user;
+            } else {
+                return null;
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+            return null;
         } finally {
             //关闭资源
             JDBCUtils.closeAll(conn,ps,rs);
         }
 
-        //返回是否可登陆的标记
-        return flag;
     }
 }
