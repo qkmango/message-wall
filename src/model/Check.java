@@ -28,13 +28,14 @@ public class Check {
         try {
             conn = JDBCUtils.getConnection();
             conn.setAutoCommit(false);
-            ps = conn.prepareStatement("select mid,target,date,msg,color,anony,u.nickname from message m LEFT JOIN user u on m.uid=u.uid WHERE m.mid=?");
+            ps = conn.prepareStatement("select mid,target,date,msg,color,anony,u.nickname,u.uid from message m LEFT JOIN user u on m.uid=u.uid WHERE m.mid=?");
             ps.setInt(1,mid);
             rs = ps.executeQuery();
 
             rs.next();
             messageInfo = new MessageInfo(
                     rs.getInt("mid"),
+                    rs.getInt("uid"),
                     rs.getString("nickname"),
                     rs.getString("target"),
                     rs.getString("date"),

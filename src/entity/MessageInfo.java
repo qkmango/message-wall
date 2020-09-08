@@ -10,23 +10,56 @@ package entity;
  */
 public class MessageInfo {
     //id
-    private int mid;
+    private int mid = 1;
+    //此条留言的作者uid
+    private int uid = 1;
     //留言者 nickname昵称
-    private String nickname;
+    private String nickname = "default";
     //接受者
-    private String target;
+    private String target = "default";
     //留言时间
-    private String date;
+    private String date = "0520-13-14";
     //留言内容
-    private String msg;
+    private String msg = "default";
     //留言板样式颜色
-    private int color;
+    private int color = 1;
     // 留言者是否匿名
-    private boolean anony;
+    private boolean anony = false;
 
-    public MessageInfo(int mid, String nickname, String target, String date, String msg, int color, boolean anony) {
+
+    /**
+     * 全参数的构造方法，供从数据库中查找出来后封装信息
+     * @param mid 此条留言的mid
+     * @param uid 此留言的作者uid
+     * @param nickname 留言作者的昵称
+     * @param target 留言对象，收信对象
+     * @param date 留言日期
+     * @param msg 留言内容
+     * @param color 主题颜色
+     * @param anony 是否匿名
+     */
+    public MessageInfo(int mid, int uid, String nickname, String target, String date, String msg, int color, boolean anony) {
         this.mid = mid;
+        this.uid = uid;
         this.nickname = nickname;
+        this.target = target;
+        this.date = date;
+        this.msg = msg;
+        this.color = color;
+        this.anony = anony;
+    }
+
+    /**
+     * 部分参数构造方法，供从前端获取表单后封装信息，供添加到数据库中使用
+     * @param uid
+     * @param target
+     * @param date
+     * @param msg
+     * @param color
+     * @param anony
+     */
+    public MessageInfo(int uid, String target, String date, String msg, int color, boolean anony) {
+        this.uid = uid;
         this.target = target;
         this.date = date;
         this.msg = msg;
@@ -40,6 +73,14 @@ public class MessageInfo {
 
     public void setMid(int mid) {
         this.mid = mid;
+    }
+
+    public int getUid() {
+        return uid;
+    }
+
+    public void setUid(int uid) {
+        this.uid = uid;
     }
 
     public String getNickname() {

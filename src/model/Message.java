@@ -35,17 +35,18 @@ public class Message {
         try {
             conn = JDBCUtils.getConnection();
             conn.setAutoCommit(true);
-            ps = conn.prepareStatement("select mid,target,date,msg,color,anony,u.nickname from message m LEFT JOIN user u on m.uid=u.uid");
+            ps = conn.prepareStatement("select u.uid,m.mid,m.target,m.date,m.msg,m.color,m.anony,u.nickname from message m LEFT JOIN user u on m.uid=u.uid");
             rs = ps.executeQuery();
             while (rs.next()) {
                 messageList.add(new MessageInfo(
                         rs.getInt("mid"),
+                        rs.getInt("uid"),
                         rs.getString("nickname"),
                         rs.getString("target"),
                         rs.getString("date"),
                         rs.getString("msg"),
                         rs.getInt("color"),
-                        (rs.getInt("anony")==0)?true:false
+                        (rs.getInt("anony")==0)?false:true
                 ));
             }
         } catch (SQLException throwables) {

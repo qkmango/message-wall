@@ -20,7 +20,7 @@
 <body>
 <div class="nav">
 
-
+<%--JSP--%>
     <%
         HttpSession session = request.getSession(false);
         if (session != null) {
@@ -32,6 +32,7 @@
             out.write("<a href='/MessageWall/view/login/'>登陆</a>");
         }
     %>
+<%--JSP end--%>
 
 </div>
 <div class="alert">
@@ -48,7 +49,6 @@
             </form>
         </div>
 
-
 <%--        JSP--%>
         <% LinkedList<MessageInfo> messageList = (LinkedList<MessageInfo>)request.getAttribute("messageList");%>
         <% int len = messageList.size(); %>
@@ -56,8 +56,8 @@
         <% MessageInfo messageInfo = messageList.get(i); %>
 
         <div class="list">
-            <div class="panel">
-                <div class="panel-heading">
+            <div class="panel panel-style-<%=messageInfo.getColor()%> <%=(i%2==0)?'l':'r'%>">
+                <div class="panel-heading panel-heading-style-<%=messageInfo.getColor()%>">
                     <span><%=messageInfo.getTarget()%></span>
                 </div>
                 <div class="panel-body"><%=messageInfo.getMsg()%></div>
@@ -65,7 +65,7 @@
                     <a href="check?mid=<%=messageInfo.getMid()%>"><button>查看</button></a>
                     <span class="panel-foot-info">
                         <span><%=messageInfo.getDate()%></span>
-                        <span><%=messageInfo.getNickname()%></span>
+                        <span><%=messageInfo.isAnony()?"匿名消息":messageInfo.getNickname()%></span>
                     </span>
                 </div>
             </div>
@@ -76,7 +76,8 @@
 
     </div>
     <div class="tab">
-        <a href="#"><div class="add">立即留言</div></a>
+<%--        servlet--%>
+        <a href="/MessageWall/messageEditor"><div class="add">立即留言</div></a>
     </div>
 </div>
 </body>

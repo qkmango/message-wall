@@ -13,15 +13,13 @@ import java.util.LinkedList;
 
 /**
  * @version 1.0
- * <p>类简介</p>
- * <p>类详细介绍</p>
+ * <p>留言墙的控制类</p>
+ * <p>是项目主要功能的控制类</p>
  * @className MessageCtrl
  * @author: Mango
  * @date: 2020-09-08 02:18
  */
-
 @WebServlet("/messagewall")
-// @WebServlet("/")
 public class MessageCtrl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
