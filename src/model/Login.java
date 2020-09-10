@@ -35,19 +35,19 @@ public class Login {
             //查询数据
             conn = JDBCUtils.getConnection();
             conn.setAutoCommit(true);
-            ps = conn.prepareStatement("select uid,email,password,nickname,sex from user where email=? && password=?");
+            ps = conn.prepareStatement("select uid,nickname,sex from user where email=? && password=?");
             ps.setString(1, userLRInfo.getEmail());
             ps.setString(2, userLRInfo.getPassword());
             rs = ps.executeQuery();
             //如果查询结果集中有一行数据说明email和password匹配，是否可登陆的表级改为true
             if (rs.next()) {
                 int uid = rs.getInt("uid");
-                String email = rs.getString("email");
-                String password = rs.getString("password");
+                // String email = rs.getString("email");
+                // String password = rs.getString("password");
                 String nickname = rs.getString("nickname");
                 int sex = rs.getInt("sex");
 
-                UserInfo user = new UserInfo(uid,email,password,nickname,sex);
+                UserInfo user = new UserInfo(uid,nickname,sex);
 
                 System.out.println(user.toString());
                 return user;

@@ -44,9 +44,9 @@ public class LoginCtrl extends HttpServlet {
         UserInfo user = Login.canLogin(userLRInfo);
 
         if(user != null){
-            response.getWriter().write("/MessageWall/messagewall");
             HttpSession session = request.getSession(true);
             session.setAttribute("user",user);
+            response.getWriter().write("/MessageWall/messagewall");
         } else {
             response.getWriter().write("-1");
         }

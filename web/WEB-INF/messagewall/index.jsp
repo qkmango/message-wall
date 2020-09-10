@@ -18,23 +18,10 @@
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/view/messagewall/style.css"/>
 </head>
 <body>
-<div class="nav">
 
-<%--JSP--%>
-    <%
-        HttpSession session = request.getSession(false);
-        if (session != null) {
-            UserInfo user = (UserInfo)session.getAttribute("user");
-            out.write("<a href='#'>"+user.getNickname()+"</a>");
-            // out.write(user.toString());
-            // out.write("芒果小洛");
-        } else {
-            out.write("<a href='/MessageWall/view/login/'>登陆</a>");
-        }
-    %>
-<%--JSP end--%>
+<%--页面头部--%>
+<%@include file="/pub/head/head.jsp"%>
 
-</div>
 <div class="alert">
     留言墙，又称心灵驿站、心情墙，留下你此时此刻的心情。<br />
     也可留下您曾经对他(她)最想说的话，他(她)可能是您曾经的朋友、曾经的恋人，亦可是当下的朋友、恋人，或者你自己，更或者是暗恋对象<br />
@@ -58,14 +45,14 @@
         <div class="list">
             <div class="panel panel-style-<%=messageInfo.getColor()%> <%=(i%2==0)?'l':'r'%>">
                 <div class="panel-heading panel-heading-style-<%=messageInfo.getColor()%>">
-                    <span><%=messageInfo.getTarget()%></span>
+                    <span><%="To: "+messageInfo.getTarget()%></span>
                 </div>
                 <div class="panel-body"><%=messageInfo.getMsg()%></div>
                 <div class="panel-foot">
                     <a href="check?mid=<%=messageInfo.getMid()%>"><button>查看</button></a>
                     <span class="panel-foot-info">
                         <span><%=messageInfo.getDate()%></span>
-                        <span><%=messageInfo.isAnony()?"匿名消息":messageInfo.getNickname()%></span>
+                        <span><%="From: "+(messageInfo.isAnony()?"匿名消息":messageInfo.getNickname())%></span>
                     </span>
                 </div>
             </div>

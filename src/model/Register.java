@@ -3,11 +3,14 @@ package model;
 import Utils.JDBCUtils;
 import entity.UserLRInfo;
 import exception.UniqueException;
+import javafx.scene.input.DataFormat;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * @version 1.0
@@ -36,9 +39,10 @@ public class Register {
             //查询数据
             conn = JDBCUtils.getConnection();
             conn.setAutoCommit(false);
-            ps = conn.prepareStatement("insert into user(email,password) values(?,?)");
+            ps = conn.prepareStatement("insert into user(email,password，regdate) values(?,?,?)");
             ps.setString(1, userLRInfo.getEmail());
             ps.setString(2, userLRInfo.getPassword());
+            ps.setString(3,new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
             int i = ps.executeUpdate();
             conn.commit();
             //如果查询结果集中有一行数据说明email和password匹配，是否可登陆的表级改为true

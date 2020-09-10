@@ -1,39 +1,50 @@
 package test;
 
-import Utils.JDBCUtils;
-import exception.UniqueException;
+import sun.misc.BASE64Encoder;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
+import java.io.*;
+
+@WebServlet("/test")
+@MultipartConfig
+public class Test extends HttpServlet {
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        // Part file = request.getPart("file");
+        // BufferedInputStream is = new BufferedInputStream(file.getInputStream());
+        //
+        // byte[] data = new byte[1024];
+        // int len = -1;
+        //
+        // FileOutputStream outputStream = new FileOutputStream(new File("E:\\资料\\tx.jpg"));
+        //
+        // while ((len = is.read(data) )!= -1) {
+        //     outputStream.write(data,0,len);
+        // }
+        // outputStream.close();
 
 
-/**
- * @version 1.0
- * @Description: //TODO
- * <p>类简介</p>
- * <p>类详细介绍</p>
- * @className Test
- * @author: Mango
- * @date: 2020-09-06 00:51
- */
-public class Test {
-    public static void main(String[] args) throws UniqueException {
 
-        try {
 
-            Connection connection = JDBCUtils.getConnection();
-            PreparedStatement ps = connection.prepareStatement("insert into user(email,password) values(?,?)");
-            ps.setString(1,"1932101106@axhu.edu.cn");
-            ps.setString(2,"a123456");
+        // BASE64Encoder encoder = new BASE64Encoder();
+        // String base64Str = encoder.encode(data);
+        // System.out.println(base64Str);
 
-            int i = ps.executeUpdate();
-            System.out.println("=============" + i);
-        } catch (SQLException throwables) {
-            // throwables.printStackTrace();
-            throw new UniqueException("数据库唯一性约束异常");
-        }
+        request.setCharacterEncoding("UTF-8");
 
+        System.out.println(request.getParameter("nickname"));
+        System.out.println(request.getParameter("sex"));
+        System.out.println(request.getParameter("birthday"));
+        System.out.println(request.getParameter("qq"));
+        System.out.println(request.getParameter("tel"));
+        System.out.println(request.getParameter("json"));
 
     }
 }

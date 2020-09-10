@@ -2,11 +2,8 @@ package model;
 
 import Utils.JDBCUtils;
 import entity.MessageInfo;
-import entity.UserInfo;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -35,7 +32,8 @@ public class AddMessage {
             ps.setString(3,messageInfo.getDate());
             ps.setString(4,messageInfo.getMsg());
             ps.setInt(5,messageInfo.isAnony()?1:0);
-            ps.setInt(6,messageInfo.getColor());
+            //判断 主题颜色如果通过非法提交超出范围，那么就默认为1
+            ps.setInt(6,((messageInfo.getColor()<=5 && messageInfo.getColor()>=1)?messageInfo.getColor():1));
 
             int count = ps.executeUpdate();
             conn.commit();

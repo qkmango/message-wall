@@ -1,5 +1,7 @@
 package entity;
 
+import com.alibaba.fastjson.JSON;
+
 /**
  * @version 1.0
  * @Description: //TODO
@@ -15,6 +17,59 @@ public class UserInfo {
     private String password;
     private String nickname;
     private int sex;
+    //注册日期
+    private String regdate;
+    //生日
+    private String birthday;
+    //头像 base64字符串形式
+    private String avatar;
+    //QQ号
+    private String qq;
+    //电话
+    private String tel;
+    //信息隐藏项目
+    private JSON hide;
+
+
+    /**
+     * 全参构造方法，供用户信息详情页使用
+     * @param uid
+     * @param email
+     * @param password
+     * @param nickname
+     * @param sex
+     * @param regdate
+     * @param birthday
+     * @param avatar
+     * @param qq
+     * @param tel
+     * @param hide
+     */
+    public UserInfo(int uid, String email, String password, String nickname, int sex, String regdate, String birthday, String avatar, String qq, String tel, JSON hide) {
+        this.uid = uid;
+        this.email = email;
+        this.password = password;
+        this.nickname = nickname;
+        this.sex = sex;
+        this.regdate = regdate;
+        this.birthday = birthday;
+        this.avatar = avatar;
+        this.qq = qq;
+        this.tel = tel;
+        this.hide = hide;
+    }
+
+    /**
+     * 部分参数的构造方法，供登陆后的非用户详情页的最基本信息使用
+     * @param uid
+     * @param nickname
+     * @param sex
+     */
+    public UserInfo(int uid, String nickname, int sex) {
+        this.uid = uid;
+        this.nickname = nickname;
+        this.sex = sex;
+    }
 
     public int getUid() {
         return uid;
@@ -56,6 +111,30 @@ public class UserInfo {
         this.sex = sex;
     }
 
+    public String getRegdate() {
+        return regdate;
+    }
+
+    public void setRegdate(String regdate) {
+        this.regdate = regdate;
+    }
+
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
     @Override
     public String toString() {
         return "UserInfo{" +
@@ -65,13 +144,5 @@ public class UserInfo {
                 ", nickname='" + nickname + '\'' +
                 ", sex=" + sex +
                 '}';
-    }
-
-    public UserInfo(int uid, String email, String password, String nickname, int sex) {
-        this.uid = uid;
-        this.email = email;
-        this.password = password;
-        this.nickname = nickname;
-        this.sex = sex;
     }
 }

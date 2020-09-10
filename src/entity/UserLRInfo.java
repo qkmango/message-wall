@@ -12,16 +12,16 @@ public class UserLRInfo {
     private String email;
     private String password;
 
+    public UserLRInfo(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+
     public String getEmail() {
         return email;
     }
 
     public UserLRInfo() {
-    }
-
-    public UserLRInfo(String email, String password) {
-        this.email = email;
-        this.password = password;
     }
 
     public void setEmail(String email) {
