@@ -1,7 +1,5 @@
 package entity;
 
-import com.alibaba.fastjson.JSON;
-
 /**
  * @version 1.0
  * @Description: //TODO
@@ -27,12 +25,12 @@ public class UserInfo {
     private String qq;
     //电话
     private String tel;
-    //信息隐藏项目
-    private JSON hide;
+    //信息隐藏项目 字符串表示，如10111，0表示自己的某个信息对外不可见
+    private String hide;
 
 
     /**
-     * 全参构造方法，供用户信息详情页使用
+     * 全参构造方法
      * @param uid
      * @param email
      * @param password
@@ -45,7 +43,7 @@ public class UserInfo {
      * @param tel
      * @param hide
      */
-    public UserInfo(int uid, String email, String password, String nickname, int sex, String regdate, String birthday, String avatar, String qq, String tel, JSON hide) {
+    public UserInfo(int uid, String email, String password, String nickname, int sex, String regdate, String birthday, String avatar, String qq, String tel, String hide) {
         this.uid = uid;
         this.email = email;
         this.password = password;
@@ -58,6 +56,56 @@ public class UserInfo {
         this.tel = tel;
         this.hide = hide;
     }
+
+    /**
+     * 除password的构造方法，供用户信息详情页使用
+     * @param uid
+     * @param email
+     * @param nickname
+     * @param sex
+     * @param regdate
+     * @param birthday
+     * @param avatar
+     * @param qq
+     * @param tel
+     * @param hide
+     */
+    public UserInfo(int uid, String email, String nickname, int sex, String regdate, String birthday, String avatar, String qq, String tel, String hide) {
+        this.uid = uid;
+        this.email = email;
+        this.nickname = nickname;
+        this.sex = sex;
+        this.regdate = regdate;
+        this.birthday = birthday;
+        this.avatar = avatar;
+        this.qq = qq;
+        this.tel = tel;
+        //需要对外隐藏或显示的个人信息，使用字符串来表示出来
+        this.hide = hide;
+    }
+
+    /**
+     * 部分参数的构造方法，供用户更新信息后后台将新的用户信息封装为UserInfo对象，传入模型层对数据库进行操作
+     * @param uid
+     * @param nickname
+     * @param sex
+     * @param birthday
+     * @param qq
+     * @param tel
+     * @param hide
+     */
+    public UserInfo(int uid, String nickname, int sex, String birthday, String qq, String tel, String hide) {
+        this.uid = uid;
+        this.nickname = nickname;
+        this.sex = sex;
+        this.birthday = birthday;
+        this.qq = qq;
+        this.tel = tel;
+        //需要对外隐藏或显示的个人信息，使用字符串来表示出来
+        this.hide = hide;
+    }
+
+
 
     /**
      * 部分参数的构造方法，供登陆后的非用户详情页的最基本信息使用
@@ -135,6 +183,30 @@ public class UserInfo {
         this.avatar = avatar;
     }
 
+    public String getQq() {
+        return qq;
+    }
+
+    public void setQq(String qq) {
+        this.qq = qq;
+    }
+
+    public String getTel() {
+        return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
+
+    public String getHide() {
+        return hide;
+    }
+
+    public void setHide(String hide) {
+        this.hide = hide;
+    }
+
     @Override
     public String toString() {
         return "UserInfo{" +
@@ -143,6 +215,12 @@ public class UserInfo {
                 ", password='" + password + '\'' +
                 ", nickname='" + nickname + '\'' +
                 ", sex=" + sex +
+                ", regdate='" + regdate + '\'' +
+                ", birthday='" + birthday + '\'' +
+                ", avatar='" + avatar + '\'' +
+                ", qq='" + qq + '\'' +
+                ", tel='" + tel + '\'' +
+                ", hide='" + hide + '\'' +
                 '}';
     }
 }

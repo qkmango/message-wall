@@ -20,7 +20,7 @@
             HttpSession session = request.getSession(false);
             if (session != null) {
                 UserInfo user = (UserInfo)session.getAttribute("user");
-                out.write("<a href='#'>"+user.getNickname()+"</a>");
+                out.write("<a href="+request.getContextPath()+"/logout"+">退出</a><a href='myinfo?info=base'>"+user.getNickname()+"</a>");
             } else {
                 out.write("<a href='/MessageWall/view/login/'>登陆</a>");
             }

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import java.io.*;
 
-@WebServlet("/test")
+// @WebServlet("/test")
 @MultipartConfig
 public class Test extends HttpServlet {
     @Override

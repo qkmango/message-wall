@@ -39,7 +39,7 @@ body {
 	position: fixed;
 	box-sizing: border-box;
 	width: 426px;
-	height: 496px;
+	height: 520px;
 	background-color: white;
 	padding: 24px;
 	margin: auto;
@@ -64,7 +64,7 @@ body {
 }
 
 /* 两个输入框 */
-input[type="email"],input[type="password"]{
+input[type="email"],input[type="password"],input[type="text"]{
 	padding-left: 10px;
 	box-sizing: border-box;
 	border: 1px solid #e1e4e8;
@@ -79,7 +79,7 @@ input[type="email"],input[type="password"]{
 }
 
 /* 三个输入框获得焦点时样式 */
-input[type="email"]:focus,input[type="password"]:focus {
+input[type="email"]:focus,input[type="password"]:focus,input[type="text"]:focus {
 	box-shadow: 0 0 0 3px rgba(3,102,214,.3);
 	border: 1px solid #0366d6;
 }
@@ -113,7 +113,7 @@ input[type="button"] {
 /* 登陆按钮上侧、输入框下侧的一段文字 */
 .info_tip {
 	line-height: 14px;
-	margin-top: -35px;
+	margin-top: 10px;
 	display: block;
 	color: #6a737d;
 	font-size: 12px;

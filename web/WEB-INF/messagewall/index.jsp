@@ -1,7 +1,6 @@
 <%@ page import="entity.MessageInfo" %>
 <%@ page import="java.util.LinkedList" %>
-<%@ page import="java.util.Iterator" %>
-<%@ page import="entity.UserInfo" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: Mango
   Date: 2020/9/8

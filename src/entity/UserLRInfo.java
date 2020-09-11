@@ -11,6 +11,13 @@ package entity;
 public class UserLRInfo {
     private String email;
     private String password;
+    private String nickname;
+
+    public UserLRInfo(String email, String password, String nickname) {
+        this.email = email;
+        this.password = password;
+        this.nickname = nickname;
+    }
 
     public UserLRInfo(String email, String password) {
         this.email = email;
@@ -34,5 +41,13 @@ public class UserLRInfo {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 }

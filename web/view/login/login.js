@@ -2,29 +2,29 @@
 $(function() {
 	
 	
-	// 验证是否为有效的email的函数，返回boolean值
-	function isValidEmail(str) {
-		if(/(^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$)/.test(str)){
-		　　return true;
-		} else {
-			return false;
-		}
-	}
+	// // 验证是否为有效的email的函数，返回boolean值
+	// function isValidEmail(str) {
+	// 	if(/(^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$)/.test(str)){
+	// 	　　return true;
+	// 	} else {
+	// 		return false;
+	// 	}
+	// }
 	
 	// 判断密码是否合法
 	// 长度6-20个字符，包括大写字母、小写字母、数字、下划线至少两种
-	function isValidPassword(str) {
-		if(str.length<6||str.length>20){
-		  return false;
-		}
-		if(/[^a-zA-Z0-9_]/.test(str)){
-		  return false;
-		}
-		if(/(^[a-z]+$|^[A-Z]+$|^\d+$|^_+$)/.test(str)){
-		  return false;
-		}
-		return true;
-	}
+	// function isValidPassword(str) {
+	// 	if(str.length<6||str.length>20){
+	// 	  return false;
+	// 	}
+	// 	if(/[^a-zA-Z0-9_]/.test(str)){
+	// 	  return false;
+	// 	}
+	// 	if(/(^[a-z]+$|^[A-Z]+$|^\d+$|^_+$)/.test(str)){
+	// 	  return false;
+	// 	}
+	// 	return true;
+	// }
 	
 	
 	// 检查Email并且显示错误提示信息

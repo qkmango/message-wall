@@ -39,13 +39,14 @@ public class Register {
             //查询数据
             conn = JDBCUtils.getConnection();
             conn.setAutoCommit(false);
-            ps = conn.prepareStatement("insert into user(email,password，regdate) values(?,?,?)");
+            ps = conn.prepareStatement("insert into user(email,password,regdate,nickname) values(?,?,?,?)");
             ps.setString(1, userLRInfo.getEmail());
             ps.setString(2, userLRInfo.getPassword());
             ps.setString(3,new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
+            ps.setString(4,userLRInfo.getNickname());
             int i = ps.executeUpdate();
             conn.commit();
-            //如果查询结果集中有一行数据说明email和password匹配，是否可登陆的表级改为true
+            //如果查询结果集中有一行数据说明email和password匹配，是否可登陆的标记改为true
             if (i == 1) {
                 flag = 1;
             }

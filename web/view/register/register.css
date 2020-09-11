@@ -8,3 +8,11 @@ input[type="button"] {
 	text-decoration: none;
 	color: #0366d6;
 }
+
+input[type="email"],input[type="password"],input[type="text"]{
+	margin-bottom: 15px;
+}
+
+.info_tip {
+	margin-top: 0;
+}
