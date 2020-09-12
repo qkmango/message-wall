@@ -66,3 +66,7 @@ input[type="button"] {
 .nav>span:nth-child(4) {
 	background-color: dimgray;
 }
+
+#msg {
+	line-height: 30px;
+}

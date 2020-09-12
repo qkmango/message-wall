@@ -47,6 +47,9 @@ public class UserInfoUtils {
                 );
             }
 
+            System.out.println(rs.getString("avatar").length());
+            System.out.println(rs.getString("avatar"));
+
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } finally {

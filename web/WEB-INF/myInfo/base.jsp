@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Mango
-  Date: 2020/9/10
-  Time: 8:03
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page session="false" %>
 <html>
@@ -13,28 +6,22 @@
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/pub/reset.css"/>
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/view/myInfo/style.css"/>
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/view/myInfo/base.css"/>
-
+    <%
+        UserInfo myInfo = (UserInfo)request.getAttribute("myInfo");
+        char[] chars = myInfo.getHide().toCharArray();
+    %>
 </head>
 <body>
 <%@include file="/pub/head/head.jsp"%>
 
-<%
-    UserInfo myInfo = (UserInfo)request.getAttribute("myInfo");
-    char[] chars = myInfo.getHide().toCharArray();
-%>
+
 
 <div class="main">
-    <div class="left">
-<%--        <img src="./img/头像.jpg"/>--%>
-    <div class="nickname"><%=myInfo.getNickname()%></div>
-    </div>
+    <%@include file="/WEB-INF/myInfo/pub_avatar.jsp"%>
+
     <div class="userinfo">
-        <div class="nav">
-            <span><a href="<%=request.getContextPath()%>/myinfo?info=base">基本信息</a></span>
-            <span><a href="">我的留言</a></span>
-            <span><a href="">更换头像</a></span>
-            <span><a href="<%=request.getContextPath()%>/myinfo?info=chpwd">更改密码</a></span>
-        </div>
+
+        <%@include file="/WEB-INF/myInfo/pub_nav.jsp"%>
         <form class="basicinfo" action="/updatemyinfo" method="post">
             <div>
                 <span>信息</span>
@@ -88,10 +75,12 @@
         </form>
     </div>
 </div>
-<%--<%@include file="/WEB-INF/myInfo/base.jsp"%>--%>
 </body>
 
 <script type="text/javascript" src="<%=request.getContextPath()%>/pub/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/pub/utils.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/view/myInfo/base.js"></script>
+
+<%--<script type="text/javascript" src="<%=request.getContextPath()%>/view/myInfo/chavatar.js"></script>--%>
+
 </html>

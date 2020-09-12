@@ -1,8 +1,8 @@
 package model;
 
 import Utils.JDBCUtils;
-import entity.UserInfo;
 
+import javax.servlet.annotation.WebServlet;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -12,39 +12,36 @@ import java.sql.SQLException;
  * @Description: //TODO
  * <p>类简介</p>
  * <p>类详细介绍</p>
- * @className UpdateMyInfo
+ * @className ChAvatar
  * @author: Mango
- * @date: 2020-09-10 15:16
+ * @date: 2020-09-12 21:29
  */
-public class UpdateMyInfo {
-    public static boolean toUpdateMyInfo(UserInfo updateUserInfo) {
+
+public class ChAvatar {
+    public static boolean chAvatar(String avatar, int uid) {
+
+
 
         Connection conn = null;
         PreparedStatement ps = null;
         boolean flag = false;
 
-        System.out.println("UpdateMyInfo");
-
         try {
+            //查询数据
             conn = JDBCUtils.getConnection();
             conn.setAutoCommit(false);
-            ps = conn.prepareStatement("update user set nickname=?,sex=?,birthday=?,qq=?,tel=?,hide=? where uid=?");
+            ps = conn.prepareStatement("update user set `avatar`=? where uid=?");
+            ps.setString(1,avatar);
+            ps.setInt(2,uid);
 
-            ps.setString(1,updateUserInfo.getNickname());
-            ps.setInt(2,updateUserInfo.getSex());
-            ps.setString(3,updateUserInfo.getBirthday());
-            ps.setString(4,updateUserInfo.getQq());
-            ps.setString(5,updateUserInfo.getTel());
-            ps.setString(6,updateUserInfo.getHide());
-            ps.setInt(7,updateUserInfo.getUid());
+            int row = ps.executeUpdate();
 
-            //
-            int count = ps.executeUpdate();
             conn.commit();
-            if (count == 1) {
+
+            //如果查询结果集中有一行数据说明email和password匹配，是否可登陆的表级改为true
+            if (row == 1) {
                 flag = true;
             }
-
         } catch (SQLException throwables) {
             try {
                 conn.rollback();
@@ -53,13 +50,10 @@ public class UpdateMyInfo {
             }
             throwables.printStackTrace();
         } finally {
+            //关闭资源
             JDBCUtils.closeAll(conn,ps);
         }
-
-
         return flag;
-
-
 
     }
 }

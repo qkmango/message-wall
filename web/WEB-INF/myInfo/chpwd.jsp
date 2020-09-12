@@ -13,31 +13,22 @@
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/pub/reset.css"/>
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/view/myInfo/style.css"/>
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/view/myInfo/chpwd.css"/>
-
+    <%
+        UserInfo myInfo = (UserInfo)request.getAttribute("myInfo");
+        // char[] chars = myInfo.getHide().toCharArray();
+    %>
 </head>
 <body>
 <%@include file="/pub/head/head.jsp"%>
 
-<%
-    UserInfo myInfo = (UserInfo)request.getAttribute("myInfo");
-    // char[] chars = myInfo.getHide().toCharArray();
-%>
+
 
 <div class="main">
-    <div class="left">
-        <%--        <img src="./img/头像.jpg"/>--%>
-        <div class="nickname"><%=myInfo.getNickname()%></div>
-    </div>
+    <%@include file="/WEB-INF/myInfo/pub_avatar.jsp"%>
     <div class="userinfo">
-        <div class="nav">
-            <span><a href="<%=request.getContextPath()%>/myinfo?info=base">基本信息</a></span>
-            <span><a href="">我的留言</a></span>
-            <span><a href="">更换头像</a></span>
-            <span><a href="<%=request.getContextPath()%>/myinfo?info=chpwd">更改密码</a></span>
-        </div>
+        <%@include file="/WEB-INF/myInfo/pub_nav.jsp"%>
 
-
-        <form class="chpwd form" action="/" method="post">
+        <form class="chpwd form" action="/chpwd" method="post">
             <span class="tip">原密码</span>
             <span class="error_tip"></span><br />
             <input type="password"/><br />
@@ -50,7 +41,7 @@
             <span class="error_tip"></span><br />
             <input type="password" /><br />
 
-            <span class="info_tip">确保电子邮件是合法的，并且密码的长度不小于6并且不大于20个字符，包括大写字母、小写字母、数字、下划线至少两种</span>
+            <span class="info_tip">密码的长度在[6,20]之间，包括大小写字母、数字、下划线至少两种</span>
             <div><input type="button" value="更新" /></div>
             <span id="msg"></span>
 

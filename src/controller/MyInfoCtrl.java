@@ -47,11 +47,13 @@ public class MyInfoCtrl extends HttpServlet {
 
             switch (info) {
                 case "base":
-
                     request.getRequestDispatcher("/WEB-INF/myInfo/base.jsp").forward(request, response);
                     break;
                 case "chpwd":
                     request.getRequestDispatcher("/WEB-INF/myInfo/chpwd.jsp").forward(request, response);
+                    break;
+                case "chavatar":
+                    request.getRequestDispatcher("/WEB-INF/myInfo/chavatar.jsp").forward(request, response);
                     break;
                 default:
                     request.getRequestDispatcher("/WEB-INF/myInfo/base.jsp").forward(request, response);

@@ -5,14 +5,16 @@
 		<title></title>
 		<link rel="stylesheet" type="text/css" href="../../pub/reset.css"/>
 		<link rel="stylesheet" type="text/css" href="style.css"/>
-		<link rel="stylesheet" type="text/css" href="chpwd.css"/>
+		<link rel="stylesheet" type="text/css" href="chavatar.css"/>
 
 	</head>
 <body>
 	
 	<div class="main">
 		<div class="left">
-<!--			<img src="./img/头像.jpg"/>-->
+			<div>
+				<img src="头像.jpg"/>
+			</div>
 			<div class="nickname">芒果小洛</div>
 		</div>
 		<div class="userinfo">
@@ -24,33 +26,85 @@
 			</div>
 
 
-			<form class="chpwd form" action="/" method="post">
-				<span class="tip">原密码</span>
-				<span class="error_tip">eeeeeee</span><br />
-				<input type="password"/><br />
+			<form class="chavatar form" action="/" method="post">
 				
-				<span class="tip">新密码</span>
-				<span class="error_tip">eeeeee</span><br />
-				<input type="password" /><br />
 				
-				<span class="tip">确认新密码</span>
-				<span class="error_tip">eeeeeee</span><br />
-				<input type="password" /><br />
+				<div>
+					<span id="-1">
+						<svg class="icon" aria-hidden="true">
+						  <use xlink:href="#icon-icon-test"></use>
+						</svg>
+					</span>
+					<span id="-2">
+						<svg class="icon" aria-hidden="true">
+						  <use xlink:href="#icon-icon-test2"></use>
+						</svg>
+					</span>
+					<span id="-3">
+						<svg class="icon" aria-hidden="true">
+						  <use xlink:href="#icon-icon-test3"></use>
+						</svg>
+					</span>
+					<span id="-4">
+						<svg class="icon" aria-hidden="true">
+						  <use xlink:href="#icon-icon-test8"></use>
+						</svg>
+					</span>
+					<span id="-5">
+						<svg class="icon" aria-hidden="true">
+						  <use xlink:href="#icon-icon-test14"></use>
+						</svg>
+					</span>
+					<span id="-6">
+						<svg class="icon" aria-hidden="true">
+						  <use xlink:href="#icon-icon-test15"></use>
+						</svg>
+					</span>
+					<span id="-7">
+						<svg class="icon" aria-hidden="true">
+						  <use xlink:href="#icon-icon-test17"></use>
+						</svg>
+					</span>
+					<span id="-8">
+						<svg class="icon" aria-hidden="true">
+						  <use xlink:href="#icon-icon-test-copy"></use>
+						</svg>
+					</span>
+					<span id="0">
+						<img  id="img" />
+					</span>
+					<span>
+						<input type="file" id="img_upload" />
+					</span>
+				</div>
+				<div class="radio">
+					<input type="radio" name="avatar" value="-1"/>
+					<input type="radio" name="avatar" value="-2"/>
+					<input type="radio" name="avatar" value="-3"/>
+					<input type="radio" name="avatar" value="-4"/>
+					<input type="radio" name="avatar" value="-5"/>
+					<input type="radio" name="avatar" value="-6"/>
+					<input type="radio" name="avatar" value="-7"/>
+					<input type="radio" name="avatar" value="-8"/>
+					<input type="radio" name="avatar" value="0"/>
+				</div>
 				
-				<span class="info_tip">确保电子邮件是合法的，并且密码的长度不小于6并且不大于20个字符，包括大写字母、小写字母、数字、下划线至少两种</span>
+				
+				
+				
+				
+				
 				<div><input type="button" value="更新" /></div>
 				<span id="msg">msg</span>
-				
 			</form>
 		</div>
 	</div>
 </body>
 <script type="text/javascript" src="../../pub/jquery-3.5.1.js"></script>
-<script type="text/javascript" src="../../pub/utils.js"></script>
-<script type="text/javascript" src="index.js"></script>
+<!-- <script type="text/javascript" src="index.js"></script> -->
+<script type="text/javascript" src="chavatar.js"></script>
+<script src="../../pub/iconfont/iconfont.js"></script>
 
-
-<script type="text/javascript" src="chpwd.js"></script>
 
 
 </html>
