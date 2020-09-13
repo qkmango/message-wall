@@ -93,7 +93,7 @@ $(function() {
 				}
 			}
 		}
-		xhr.open("POST","http://localhost:8080/MessageWall/login",true);
+		xhr.open("POST","/MessageWall/login",true);
 		// 如果想要使用post提交数据,必须添加此行
 		xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		// 请求体中发送数据

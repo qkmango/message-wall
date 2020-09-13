@@ -122,7 +122,7 @@ $(function() {
 					}
 				}
 			}
-			xhr.open("POST","http://localhost:8080/MessageWall/chavatar",true);
+			xhr.open("POST","/MessageWall/chavatar",true);
 			xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 			xhr.send("avatar="+avatar);
 		}
