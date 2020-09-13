@@ -14,7 +14,7 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/pub/head/style.css"/>
 <body>
     <div class="header-nav">
-
+        <a href="/MessageWall/messagewall">主页</a>
         <%--JSP--%>
         <%
             HttpSession session = request.getSession(false);

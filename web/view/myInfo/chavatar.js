@@ -1,5 +1,5 @@
 $(function() {
-	// 重置按钮
+	// 取消重置按钮
 	var reset = $(":reset");
 	// 自定义头像的base64字符串
 	var base64Str = new Object("");
@@ -11,13 +11,30 @@ $(function() {
 	var diyAvatarImg = document.getElementById('img');
 	// 更新按钮
 	var button = $(":button")[0];
-	
+	//更新提示信息
+	var msg = $("#msg")[0];
+
+
+	//输入域与复选框值发生改变时，设置提示信息
+	// $(":radio,select").bind("change",function(){
+	// 	msg.innerText = "🔄 待更新";
+	// });
+
+	$(':radio').click(function() {
+		msg.innerText = "🔄 待更新";
+	});
+
+	reset.click(function () {
+		msg.innerText = "";
+	});
+
+
 	
 	button.onclick = function() {
 		// 选中的头像的value值
 		var checkedValue = $('input[name="avatar"]:checked').val();
 		if ((typeof checkedValue) == "undefined") {
-			alert("请选择头像！")
+			alert("请点击单选按钮选择头像！")
 		} else {
 			if(checkedValue != "0") {
 				upAvatar(checkedValue);
@@ -99,7 +116,7 @@ $(function() {
 			xhr.onreadystatechange = function(){
 				if(xhr.readyState == 4) {
 					if (xhr.responseText == "1") {
-						msg.innerText = "✅ 更新成功！";
+						msg.innerText = "✅ 更新成功，请刷新页面！";
 					} else {
 						msg.innerText = "❌ 更新失败！";
 					}

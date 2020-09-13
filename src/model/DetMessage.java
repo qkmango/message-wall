@@ -7,57 +7,56 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.LinkedList;
 
 /**
  * @version 1.0
- * <p>类简介</p>
- * <p>获取留言的模型</p>
- * @className Message
+ * <p>获取某个message的详细信息</p>
+ * <p>主界面点击查看按钮，获取某个message的详细信息，此模型层返回此条message详细信息</p>
+ * @className DetMessage
  * @author: Mango
- * @date: 2020-09-08 01:39
+ * @date: 2020-09-13 12:08
  */
-public class Message {
+public class DetMessage {
 
-    /**
-     * 留言信息集合
-     * <p>此方法查询数据库返回留言信息集合</p>
-     * @param
-     * @return 返回一个留言信息集合
-     */
-    public static LinkedList<MessageInfo> getMessageList() {
-        LinkedList<MessageInfo> messageList = new LinkedList<>();
+    public static MessageInfo getDetMessage(int mid) {
+
 
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
+        //一条message的详细信息
+        MessageInfo detMessage = null;
 
         try {
             conn = JDBCUtils.getConnection();
             conn.setAutoCommit(true);
-            ps = conn.prepareStatement("select u.uid,m.mid,m.target,m.date,m.msg,m.color,m.anony,u.nickname from message m LEFT JOIN user u on m.uid=u.uid");
+            ps = conn.prepareStatement("select u.uid,m.mid,m.target,m.date,m.msg,m.color,m.anony,u.nickname from message m LEFT JOIN user u on m.uid=u.uid where m.mid=?");
+            ps.setInt(1,mid);
             rs = ps.executeQuery();
-            while (rs.next()) {
-                messageList.add(new MessageInfo(
-                        rs.getInt("mid"),
+            if (rs.next()) {
+                detMessage = new MessageInfo(
+                        mid,
                         rs.getInt("uid"),
-                        rs.getString("nickname"),
+                        rs.getNString("nickname"),
                         rs.getString("target"),
                         rs.getString("date"),
                         rs.getString("msg"),
                         rs.getInt("color"),
                         rs.getInt("anony")==1
-                ));
+                );
             }
+
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } finally {
             JDBCUtils.closeAll(conn,ps,rs);
         }
 
-        return messageList;
+
+        return detMessage;
+
+
+
 
     }
-
-
 }

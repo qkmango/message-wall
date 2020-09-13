@@ -63,4 +63,50 @@ public class Login {
         }
 
     }
+
+
+    /**
+     * 信息更新后，重新查询数据库
+     * <p>信息更新后重新查新数据库，返回一个新的UserInfo user对象</p>
+     * @param uid 参数说明
+     * @return UserInfo用户登陆后非个人信息页的所需要的基本信息 uid,nickname,sex
+     */
+    public static UserInfo ReloadUserInfo(int uid) {
+
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            //查询数据
+            conn = JDBCUtils.getConnection();
+            conn.setAutoCommit(true);
+            ps = conn.prepareStatement("select uid,nickname,sex from user where uid=?");
+            ps.setInt(1, uid);
+            rs = ps.executeQuery();
+            //如果查询结果集中有一行数据说明email和password匹配，是否可登陆的表级改为true
+            if (rs.next()) {
+                // int uid = rs.getInt("uid");
+                // String email = rs.getString("email");
+                // String password = rs.getString("password");
+                String nickname = rs.getString("nickname");
+                int sex = rs.getInt("sex");
+
+                UserInfo user = new UserInfo(uid,nickname,sex);
+
+                // System.out.println(user.toString());
+                return user;
+            } else {
+                return null;
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            return null;
+        } finally {
+            //关闭资源
+            JDBCUtils.closeAll(conn,ps,rs);
+        }
+
+    }
+
 }

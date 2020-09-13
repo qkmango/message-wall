@@ -29,7 +29,7 @@ public class UserInfoUtils {
             conn = JDBCUtils.getConnection();
             conn.setAutoCommit(true);
 
-            ps = conn.prepareStatement("select uid,email,nickname,sex,regdate,birthday,avatar,qq,tel,hide from user where uid=?");
+            ps = conn.prepareStatement("select uid,email,nickname,sex,regdate,birthday,ifnull(avatar,'#icon-icon-test') avatar,qq,tel,hide from user where uid=?");
             ps.setInt(1, uid);
             rs = ps.executeQuery();
             if (rs.next()) {

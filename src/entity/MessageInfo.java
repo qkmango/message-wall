@@ -28,7 +28,7 @@ public class MessageInfo {
 
 
     /**
-     * 全参数的构造方法，供从数据库中查找出来后封装信息
+     * 全参数的构造方法，  供从数据库中查找出来后封装信息
      * @param mid 此条留言的mid
      * @param uid 此留言的作者uid
      * @param nickname 留言作者的昵称

@@ -15,6 +15,7 @@
     <title>留言墙</title>
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/pub/reset.css"/>
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/view/messagewall/style.css"/>
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/pub/color.css"/>
 </head>
 <body>
 
@@ -48,7 +49,8 @@
                 </div>
                 <div class="panel-body"><%=messageInfo.getMsg()%></div>
                 <div class="panel-foot">
-                    <a href="check?mid=<%=messageInfo.getMid()%>"><button>查看</button></a>
+                    <a href="detmessage?mid=<%=messageInfo.getMid()%>"><button>查看</button></a>
+
                     <span class="panel-foot-info">
                         <span><%=messageInfo.getDate()%></span>
                         <span><%="From: "+(messageInfo.isAnony()?"匿名消息":messageInfo.getNickname())%></span>

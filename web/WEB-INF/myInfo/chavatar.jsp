@@ -95,7 +95,7 @@
             </div>
 
 
-            <span id="msg">msg</span>
+            <span id="msg"></span>
         </form>
 
 

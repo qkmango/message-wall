@@ -1,6 +1,7 @@
 package controller;
 
 import entity.UserInfo;
+import model.Login;
 import model.UpdateMyBaseInfo;
 
 import javax.servlet.ServletException;
@@ -13,9 +14,8 @@ import java.io.IOException;
 
 /**
  * @version 1.0
- * @Description: //TODO
- * <p>类简介</p>
- * <p>类详细介绍</p>
+ * <p>更新个人基本信息的控制类</p>
+ * <p>根据请求的内容，创建一个UserInfo对象，调用UpdateMyBaseInfo模型层的方法来更改基本信息</p>
  * @className UpdateMyInfo
  * @author: Mango
  * @date: 2020-09-10 14:12
@@ -42,12 +42,14 @@ public class UpdateMyBaseInfoCtrl extends HttpServlet {
                     request.getParameter("hide")
             );
 
-            System.out.println(request.getParameter("sex"));
-            System.out.println(request.getParameter("sex") instanceof String);
-            System.out.println(updateUserInfo);
+            // System.out.println(request.getParameter("sex"));
+            // System.out.println(request.getParameter("sex") instanceof String);
+            // System.out.println(updateUserInfo);
 
             boolean flag = UpdateMyBaseInfo.toUpdateMyInfo(updateUserInfo);
             if (flag) {
+                user = Login.ReloadUserInfo(user.getUid());
+                session.setAttribute("user",user);
                 response.getWriter().write("1");
             } else {
                 response.getWriter().write("-1");

@@ -70,7 +70,9 @@
                 <span><input type="text" name="tel" value="<%=myInfo.getTel()%>" maxlength="11" /></span>
                 <span><input type="checkbox" <%=(chars[4] == '0')?"checked='checked'":""%>/></span>
             </div>
-            <div><input type="button" value="更新"/></div>
+            <div>
+                <input type="button" value="更新"/>
+            </div>
             <span id="msg"></span>
         </form>
     </div>
@@ -80,7 +82,5 @@
 <script type="text/javascript" src="<%=request.getContextPath()%>/pub/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/pub/utils.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/view/myInfo/base.js"></script>
-
-<%--<script type="text/javascript" src="<%=request.getContextPath()%>/view/myInfo/chavatar.js"></script>--%>
 
 </html>
