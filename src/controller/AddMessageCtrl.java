@@ -39,7 +39,7 @@ public class AddMessageCtrl extends HttpServlet {
             String date = dateFormat.format(new Date());
             String msg = request.getParameter("msg");
             int color = Integer.parseInt(request.getParameter("color"));
-            boolean anony = request.getParameter("anony") == "0" ?false:true;
+            int anony = request.getParameter("anony") == null?1:0;
 
             MessageInfo messageInfo = new MessageInfo(uid, target, date, msg, color, anony);
             boolean flag = AddMessage.addMessage(messageInfo);

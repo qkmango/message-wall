@@ -41,7 +41,7 @@ public class Check {
                     rs.getString("date"),
                     rs.getString("msg"),
                     rs.getInt("color"),
-                    (rs.getInt("anony")==0)?true:false
+                    rs.getInt("anony")
             );
 
 

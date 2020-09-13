@@ -40,7 +40,7 @@
     <div class="panel-foot">
 			<span class="panel-foot-info">
 				<span>匿名发布</span>
-				<input type="checkbox" name="anony" value="anony" />
+				<input type="checkbox" name="anony" value="0" />
 				<span class="color">
 					<span>主题</span>
 					<input type="radio" name="color" value="1" checked="checked" />

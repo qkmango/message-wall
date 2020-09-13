@@ -9,7 +9,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page session="false" %>
-<html>
+<html lang="zh-CN">
 <head>
     <meta charset="utf-8">
     <title>留言墙</title>
@@ -53,7 +53,7 @@
 
                     <span class="panel-foot-info">
                         <span><%=messageInfo.getDate()%></span>
-                        <span><%="From: "+(messageInfo.isAnony()?"匿名消息":messageInfo.getNickname())%></span>
+                        <span><%="From: "+(messageInfo.getAnony()==0?"匿名消息":messageInfo.getNickname())%></span>
                     </span>
                 </div>
             </div>

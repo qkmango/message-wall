@@ -24,7 +24,7 @@ public class MessageInfo {
     //留言板样式颜色
     private int color = 1;
     // 留言者是否匿名
-    private boolean anony = false;
+    private int anony = 0;
 
 
     /**
@@ -38,7 +38,7 @@ public class MessageInfo {
      * @param color 主题颜色
      * @param anony 是否匿名
      */
-    public MessageInfo(int mid, int uid, String nickname, String target, String date, String msg, int color, boolean anony) {
+    public MessageInfo(int mid, int uid, String nickname, String target, String date, String msg, int color, int anony) {
         this.mid = mid;
         this.uid = uid;
         this.nickname = nickname;
@@ -58,7 +58,7 @@ public class MessageInfo {
      * @param color
      * @param anony
      */
-    public MessageInfo(int uid, String target, String date, String msg, int color, boolean anony) {
+    public MessageInfo(int uid, String target, String date, String msg, int color, int anony) {
         this.uid = uid;
         this.target = target;
         this.date = date;
@@ -123,11 +123,25 @@ public class MessageInfo {
         this.color = color;
     }
 
-    public boolean isAnony() {
+    public int getAnony() {
         return anony;
     }
 
-    public void setAnony(boolean anony) {
+    public void setAnony(int anony) {
         this.anony = anony;
+    }
+
+    @Override
+    public String toString() {
+        return "MessageInfo{" +
+                "mid=" + mid +
+                ", uid=" + uid +
+                ", nickname='" + nickname + '\'' +
+                ", target='" + target + '\'' +
+                ", date='" + date + '\'' +
+                ", msg='" + msg + '\'' +
+                ", color=" + color +
+                ", anony=" + anony +
+                '}';
     }
 }

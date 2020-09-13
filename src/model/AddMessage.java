@@ -31,7 +31,7 @@ public class AddMessage {
             ps.setString(2,messageInfo.getTarget());
             ps.setString(3,messageInfo.getDate());
             ps.setString(4,messageInfo.getMsg());
-            ps.setInt(5,messageInfo.isAnony()?1:0);
+            ps.setInt(5,messageInfo.getAnony());
             //判断 主题颜色如果通过非法提交超出范围，那么就默认为1
             ps.setInt(6,((messageInfo.getColor()<=5 && messageInfo.getColor()>=1)?messageInfo.getColor():1));
 

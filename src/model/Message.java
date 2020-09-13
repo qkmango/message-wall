@@ -46,7 +46,7 @@ public class Message {
                         rs.getString("date"),
                         rs.getString("msg"),
                         rs.getInt("color"),
-                        rs.getInt("anony")==1
+                        rs.getInt("anony")
                 ));
             }
         } catch (SQLException throwables) {
