@@ -1,0 +1,43 @@
+/*每个留言的颜色样式*/
+/*style-1*/
+.panel-style-1 {
+	border-color: #bce8f1;
+}
+.panel-heading-style-1 {
+	background-color: #d9edf7;
+	color: #31708f;
+}
+
+/*style-2*/
+.panel-style-2 {
+	border-color: #337ab7;
+}
+.panel-heading-style-2 {
+	background-color: #337ab7;
+	color: white;
+}
+/*style-3*/
+.panel-style-3 {
+	border-color: #d6e9c6;
+}
+.panel-heading-style-3 {
+	background-color: #dff0d8;
+	color: #3c763d;
+}
+
+/*style-4*/
+.panel-style-4 {
+	border-color: #faebcc;
+}
+.panel-heading-style-4 {
+	background-color: #fcf8e3;
+	color: #8a6d3b;
+}
+/*style-5*/
+.panel-style-5 {
+	border-color: #ebccd1;
+}
+.panel-heading-style-5 {
+	background-color: #f2dede;
+	color: #a94442;
+}
