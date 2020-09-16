@@ -1,5 +1,6 @@
 <%@ page import="entity.MessageInfo" %>
 <%@ page import="java.util.LinkedList" %>
+<%@ page import="entity.PageMessageList" %>
 <%--
   Created by IntelliJ IDEA.
   User: Mango
@@ -37,10 +38,14 @@
         </div>
 
 <%--        JSP--%>
-        <% LinkedList<MessageInfo> messageList = (LinkedList<MessageInfo>)request.getAttribute("messageList");%>
-        <% int len = messageList.size(); %>
-        <%for (int i = 0; i < len; i++) { %>
-        <% MessageInfo messageInfo = messageList.get(i); %>
+        <%
+            PageMessageList pageMessageList = (PageMessageList)request.getAttribute("pageMessageList");
+            LinkedList<MessageInfo> messageList = pageMessageList.getMessageList();
+            int len = messageList.size();
+            for (int i = 0; i < len; i++) {
+            MessageInfo messageInfo = messageList.get(i);
+
+        %>
 
         <div class="list">
             <div class="panel panel-style-<%=messageInfo.getColor()%> <%=(i%2==0)?'l':'r'%>">
@@ -66,6 +71,31 @@
     <div class="tab">
 <%--        servlet--%>
         <a href="/MessageWall/messageEditor"><div class="add">立即留言</div></a>
+
+        <div class="indexes">
+            <a href="messagewall?page=<%=pageMessageList.getBackPageNum()%>" id="back">上一页</a>
+            <a href="messagewall?page=<%=pageMessageList.getNextPageNum()%>" id="next">下一页</a>
+            <div class="index_info">
+                <div>当前页：<%=pageMessageList.getPageNum()%></div>
+                <div>总页数：<%=pageMessageList.getAllPageCount()%></div>
+                <div>总条数：<%=pageMessageList.getAllRowCount()%></div>
+            </div>
+            <ul class="indexes_ul">
+                <%
+                    int pageNum = pageMessageList.getPageNum();
+                    int allPageCount = pageMessageList.getAllPageCount();
+                    int printStartPageNum = pageNum-10 > 0 ? pageNum- 10 : 1;
+                    int printEndPageNum = pageNum+10 < allPageCount ? pageNum+10 : allPageCount;
+
+                    for (int i = printStartPageNum; i<=printEndPageNum; i++) {
+                        out.write("<a href='messagewall?page="+i+"'");
+                        if(pageNum==i) out.write(" id='this_page_index' ");
+                        out.write(">"+i+"</a>");
+                    }
+                %>
+            </ul>
+        </div>
+
     </div>
 </div>
 </body>

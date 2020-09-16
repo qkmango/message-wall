@@ -1,26 +1,31 @@
 /*更改密码样式*/
 
-.chpwd * {
-    color: white;
-    font-size: 16px;
+/*.chpwd * {*/
+/*    font-size: 16px;*/
+/*}*/
+
+.chpwd input[type="button"] {
+	color: dimgray;
+	font-size: 16px;
 }
 
-.chpwd {
+.chpwd{
     float: right;
     display: block;
     font-size: 14px;
     width: 70%;
 	padding: 20px;
-    background-color: dimgray;
+    /*background-color: dimgray;*/
 	box-sizing: border-box;
 }
 
 .tip {
 	display: inline-block;
-	width: 100px;
+	width: 35%;
 	font-size: 16px;
 	font-weight: 600;
 	line-height: 21px;
+	color: dimgray;
 }
 
 input[type="password"]{
@@ -29,7 +34,7 @@ input[type="password"]{
 	box-sizing: border-box;
 	border: 2px solid #e1e4e8;
 	font-size: 30px;
-	width: 40%;
+	/*width: 40%;*/
 	height: 44px;
 	border-radius:5px;
 	margin-bottom: 15px;

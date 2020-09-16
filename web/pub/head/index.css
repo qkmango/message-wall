@@ -1,0 +1,86 @@
+body>nav>a{
+	text-decoration: none;
+	color: white;
+}
+
+body>nav {
+	background-color: #3A3632;
+	height: 40px;
+	padding: 0 20px 0 20px;
+	font-size: 17px;
+	box-shadow: 0 5px 5px rgba(0,0,0,.3);
+	position: fixed;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+#solvefix{
+	height: 40px;
+	/* background-color: red; */
+}
+
+
+#logo {
+	float: left;
+	height: 28px;
+	margin: 6px 10px 6px auto;
+}
+
+#index {
+	float: left;
+	height: 40px;
+}
+
+#index_link {
+	float: left;
+	line-height: 40px;
+}
+
+#index_img {
+	/* margin-left: 20px; */
+	float: left;
+	height: 28px;
+	margin-top: 6px;
+}
+
+#login_logout {
+	height: 100%;
+	float: right;
+}
+
+#login_logout>img {
+	float: left;
+	height: 28px;
+	margin-top: 6px;
+}
+
+#login_logout>span {
+	line-height: 40px;
+}
+
+#my {
+	float: right;
+	height: 100%;
+	margin-right: 20px;
+}
+
+#my>img {
+	float: left;
+	height: 20px;
+	margin-top: 10px;
+}
+
+#my>span{
+	line-height: 40px;
+}
+
+nav>a{
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+nav>a:hover {
+	color: #fe7300;
+	background-color: #5f5852;
+	/* background-color: #fe7300; */
+}

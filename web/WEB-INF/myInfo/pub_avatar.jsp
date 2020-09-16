@@ -15,7 +15,7 @@
             out.write("<img id='avatar' src="+avatar+" />");
         } else {
             out.write("<svg class='icon' id='avatar' aria-hidden='true'>" +
-                    "    <use xlink:href='"+avatar+"'></use>'" +
+                    "<use xlink:href='"+avatar+"'></use>'" +
                     "</svg>");
         }
     %>

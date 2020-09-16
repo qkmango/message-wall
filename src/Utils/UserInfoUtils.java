@@ -53,6 +53,7 @@ public class UserInfoUtils {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } finally {
+            JDBCUtils.closeAll(conn,ps,rs);
             return userInfo;
         }
     }

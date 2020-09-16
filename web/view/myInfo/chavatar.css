@@ -22,8 +22,12 @@ input[type="reset"] {
 }
 
 
+/*.chavatar * {*/
+/*    font-size: 16px;*/
+/*}*/
+
 .chavatar * {
-    color: white;
+    color: dimgray;
     font-size: 16px;
 }
 
@@ -33,7 +37,7 @@ input[type="reset"] {
     font-size: 14px;
     width: 70%;
     padding: 20px;
-    background-color: dimgray;
+    /*background-color: dimgray;*/
     box-sizing: border-box;
 }
 
@@ -70,8 +74,7 @@ input[type="radio"]:first-child {
 }
 
 input[type="file"] {
-	/* display: inline-block; */
 	margin-left: 10px;
-	background-color: #000000;
+	background-color: #8bc34a;
 	width: 200px;
 }

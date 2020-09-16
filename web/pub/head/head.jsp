@@ -1,32 +1,41 @@
 <%@ page import="entity.UserInfo" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: Mango
-  Date: 2020/9/9
-  Time: 12:45
-  To change this template use File | Settings | File Templates.
---%>
-
-<%--页面公共的头部--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page session="false" %>
 <html>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/pub/head/style.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/pub/head/index.css"/>
 <body>
-    <div class="header-nav">
-        <a href="/MessageWall/messagewall">主页</a>
-        <%--JSP--%>
+
+<%
+    HttpSession session = request.getSession(false);
+%>
+
+    <nav>
+        <img src="<%=request.getContextPath()%>/pub/imgs/head/logo_title.png" id="logo" />
+        <a href="/MessageWall/messagewall" id="index">
+            <img src="<%=request.getContextPath()%>/pub/imgs/head/index.svg" id="index_img" />
+            <span id="index_link">主页</span>
+        </a>
+
+        <a href="<%=session==null?"/MessageWall/view/login/":request.getContextPath()+"/logout"%>" id="login_logout">
+            <img src="<%=request.getContextPath()%>/pub/imgs/title_icon/log-<%=session==null?"in":"out"%>.svg" />
+            <span><%=session==null?"登陆":"退出"%></span>
+        </a>
+
         <%
-            HttpSession session = request.getSession(false);
-            if (session != null) {
+            if (session!=null) {
                 UserInfo user = (UserInfo)session.getAttribute("user");
-                out.write("<a href="+request.getContextPath()+"/logout"+">退出</a><a href='myinfo?info=base'>"+user.getNickname()+"</a>");
-            } else {
-                out.write("<a href='/MessageWall/view/login/'>登陆</a>");
+                String nickname = user.getNickname();
+                String contextPath = request.getContextPath();
+                out.write("<a href=myinfo?info=base id=my>");
+                out.write("");
+                out.write("<img src="+contextPath+"/pub/imgs/head/user.svg />");
+                out.write("<span>"+nickname+"</span>");
             }
         %>
-        <%--JSP end--%>
 
-    </div>
+        </a>
+    </nav>
+    <div id="solvefix"></div>
+</div>
 </body>
 </html>

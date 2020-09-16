@@ -19,9 +19,9 @@
 <div class="main">
     <%@include file="/WEB-INF/myInfo/pub_avatar.jsp"%>
 
+    <%@include file="/WEB-INF/myInfo/pub_nav.jsp"%>
     <div class="userinfo">
 
-        <%@include file="/WEB-INF/myInfo/pub_nav.jsp"%>
         <form class="basicinfo" action="/updatemyinfo" method="post">
             <div>
                 <span>信息</span>
@@ -77,6 +77,9 @@
         </form>
     </div>
 </div>
+
+
+<%@include file="/pub/footer/index.jsp"%>
 </body>
 
 <script type="text/javascript" src="<%=request.getContextPath()%>/pub/jquery-3.5.1.js"></script>

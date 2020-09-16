@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -43,6 +44,15 @@ public class AddMessageCtrl extends HttpServlet {
 
             MessageInfo messageInfo = new MessageInfo(uid, target, date, msg, color, anony);
             boolean flag = AddMessage.addMessage(messageInfo);
+            response.setContentType("text/html;charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            if (flag) {
+                writer.write("<h1>添加成功</h1>");
+            } else {
+                writer.write("<h1>添加失败！</h1>");
+            }
+            writer.write("<a href='messagewall'>返回主页</a><br><a href='messageEditor'>继续留言</a>");
+
         } else {
             response.sendRedirect(request.getContextPath()+"/view/login/");
         }

@@ -44,7 +44,6 @@
             <span class="info_tip">密码的长度在[6,20]之间，包括大小写字母、数字、下划线至少两种</span>
             <div><input type="button" value="更新" /></div>
             <span id="msg"></span>
-
         </form>
 
 
@@ -55,6 +54,8 @@
 
     </div>
 </div>
+
+<%@include file="/pub/footer/index.jsp"%>
 </body>
 
 <script type="text/javascript" src="<%=request.getContextPath()%>/pub/jquery-3.5.1.js"></script>

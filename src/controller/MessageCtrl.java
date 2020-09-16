@@ -1,6 +1,7 @@
 package controller;
 
 import entity.MessageInfo;
+import entity.PageMessageList;
 import model.Message;
 
 import javax.servlet.ServletException;
@@ -23,8 +24,17 @@ import java.util.LinkedList;
 public class MessageCtrl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        LinkedList<MessageInfo> messageList = Message.getMessageList();
-        request.setAttribute("messageList",messageList);
+
+        request.setCharacterEncoding("UTF-8");
+        // String page1 = request.getParameter("page");
+        String page = request.getParameter("page");
+        int pageNum = 1;
+        if (page != null) {
+            pageNum = Integer.parseInt(page);
+        }
+
+        PageMessageList pageMessageList = Message.pageMessageList(pageNum);
+        request.setAttribute("pageMessageList",pageMessageList);
         request.getRequestDispatcher("/WEB-INF/messagewall/index.jsp").forward(request,response);
         System.out.println("=====");
     }
