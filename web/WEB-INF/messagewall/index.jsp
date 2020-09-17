@@ -72,6 +72,8 @@
 <%--        servlet--%>
         <a href="/MessageWall/messageEditor"><div class="add">立即留言</div></a>
 
+
+<%--    右侧索引--%>
         <div class="indexes">
             <a href="messagewall?page=<%=pageMessageList.getBackPageNum()%>" id="back">上一页</a>
             <a href="messagewall?page=<%=pageMessageList.getNextPageNum()%>" id="next">下一页</a>
@@ -84,8 +86,10 @@
                 <%
                     int pageNum = pageMessageList.getPageNum();
                     int allPageCount = pageMessageList.getAllPageCount();
-                    int printStartPageNum = pageNum-10 > 0 ? pageNum- 10 : 1;
-                    int printEndPageNum = pageNum+10 < allPageCount ? pageNum+10 : allPageCount;
+                    //printStartPageNum 打印的右侧索引开始页面数字，默认是当前页面的的前20页，最低为第一页
+                    //printEndPageNum 打印的右侧索引结束页面数字，默认是当前页面的的后20页，最高为总页数
+                    int printStartPageNum = pageNum-20 > 0 ? pageNum- 20 : 1;
+                    int printEndPageNum = pageNum+20 < allPageCount ? pageNum+20 : allPageCount;
 
                     for (int i = printStartPageNum; i<=printEndPageNum; i++) {
                         out.write("<a href='messagewall?page="+i+"'");

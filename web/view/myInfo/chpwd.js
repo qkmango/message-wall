@@ -53,12 +53,15 @@ $(function() {
 	
 	
 	button.onclick = function() {
-		
 		if(checkPassword(old_pwd.value,old_et) & 
 			(checkPassword(new_pwd.value,new_et) & 
 			checkConfirmPassword(new_pwd.value,confirm_pwd.value,con_et))) {
 
-			updatePwd(old_pwd.value,new_pwd.value);
+			if (old_pwd.value==new_pwd.value) {
+				alert("旧密码与新密码相同！");
+			} else {
+				updatePwd(old_pwd.value,new_pwd.value);
+			}
 		}
 	}
 	

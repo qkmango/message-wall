@@ -72,8 +72,10 @@
                     <%
                         int pageNum = pageMessageList.getPageNum();
                         int allPageCount = pageMessageList.getAllPageCount();
-                        int printStartPageNum = pageNum-10 > 0 ? pageNum- 10 : 1;
-                        int printEndPageNum = pageNum+10 < allPageCount ? pageNum+10 : allPageCount;
+                        //printStartPageNum 打印的右侧索引开始页面数字，默认是当前页面的的前20页，最低为第一页
+                        //printEndPageNum 打印的右侧索引结束页面数字，默认是当前页面的的后20页，最高为总页数
+                        int printStartPageNum = pageNum-20 > 0 ? pageNum- 20 : 1;
+                        int printEndPageNum = pageNum+20 < allPageCount ? pageNum+20 : allPageCount;
 
                         for (int i = printStartPageNum; i<=printEndPageNum; i++) {
                             out.write("<a href='myinfo?info=messagelist&page="+i+"'");
@@ -86,7 +88,7 @@
 
 
 
-            <div><input type="button" value="更新" /></div>
+            <div><input type="button" value="删除" /></div>
             <span id="msg"></span>
         </form>
     </div>
