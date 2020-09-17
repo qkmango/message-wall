@@ -14,7 +14,7 @@ import java.io.IOException;
 
 /**
  * @version 1.0
- * <p>更新个人基本信息的控制类</p>
+ * <p>更新个人基本信息的 控制类</p>
  * <p>根据请求的内容，创建一个UserInfo对象，调用UpdateMyBaseInfo模型层的方法来更改基本信息</p>
  * @className UpdateMyInfo
  * @author: Mango

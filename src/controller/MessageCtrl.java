@@ -1,6 +1,5 @@
 package controller;
 
-import entity.MessageInfo;
 import entity.PageMessageList;
 import model.Message;
 
@@ -10,11 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.LinkedList;
 
 /**
  * @version 1.0
- * <p>留言墙的控制类</p>
+ * <p>主页留言墙 获取留言的控制层</p>
  * <p>是项目主要功能的控制类</p>
  * @className MessageCtrl
  * @author: Mango
@@ -33,7 +31,7 @@ public class MessageCtrl extends HttpServlet {
             pageNum = Integer.parseInt(page);
         }
 
-        PageMessageList pageMessageList = Message.pageMessageList(pageNum);
+        PageMessageList pageMessageList = Message.pageMessageListAll(pageNum);
         request.setAttribute("pageMessageList",pageMessageList);
         request.getRequestDispatcher("/WEB-INF/messagewall/index.jsp").forward(request,response);
         System.out.println("=====");

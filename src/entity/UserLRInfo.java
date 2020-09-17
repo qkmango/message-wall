@@ -2,7 +2,7 @@ package entity;
 
 /**
  * @version 1.0
- * <p>用户登陆与注册信息实体类</p>
+ * <p>用户登陆与注册信息 实体类</p>
  * <p>用户登陆和注册时email和password的信息封装在此类当中</p>
  * @className UserLRInfo
  * @author: Mango

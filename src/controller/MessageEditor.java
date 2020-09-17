@@ -9,7 +9,7 @@ import java.io.IOException;
 
 /**
  * @version 1.0
- * <p>添加新的Message编辑页面控制类</p>
+ * <p>添加新的Message编辑页面控制层</p>
  * <p>当要进入编辑Message时，判断用户是否登陆，如果登陆，则转发调用编辑页面jsp；如果没有登陆，则重定向到登陆页面</p>
  * @className MessageEditor
  * @author: Mango

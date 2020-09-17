@@ -1,6 +1,8 @@
 package controller;
 
+import entity.PageMessageList;
 import entity.UserInfo;
+import model.Message;
 import model.MyInfo;
 
 import javax.servlet.ServletException;
@@ -45,23 +47,41 @@ public class MyInfoCtrl extends HttpServlet {
             }
 
 
+            //根据请求参数转发到不同的jsp
+
+            //1. 用户基本信息
             switch (info) {
                 case "base":
                     request.getRequestDispatcher("/WEB-INF/myInfo/base.jsp").forward(request, response);
                     break;
+
+                //    2. 用户所的所有留言
+                case "messagelist":
+                    String page = request.getParameter("page");
+                    int pageNum = 1;
+                    if (page != null) {
+                        pageNum = Integer.parseInt(page);
+                    }
+                    PageMessageList pageMessageList = Message.pageMessageListFromUid(pageNum,user.getUid());
+                    request.setAttribute("pageMessageList",pageMessageList);
+                    request.getRequestDispatcher("/WEB-INF/myInfo/messagelist.jsp").forward(request, response);
+                    break;
+                // 3. 用户更改密码
                 case "chpwd":
                     request.getRequestDispatcher("/WEB-INF/myInfo/chpwd.jsp").forward(request, response);
                     break;
+                // 用户更改头像
                 case "chavatar":
                     request.getRequestDispatcher("/WEB-INF/myInfo/chavatar.jsp").forward(request, response);
                     break;
+
                 default:
                     request.getRequestDispatcher("/WEB-INF/myInfo/base.jsp").forward(request, response);
             }
 
 
 
-
+        //如果没有登陆则转重定向到登陆页面
         } else {
             response.sendRedirect(request.getContextPath()+"/view/login/");
         }

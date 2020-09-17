@@ -2,9 +2,10 @@ package entity;
 
 /**
  * @version 1.0
- * @Description: //TODO
- * <p>类简介</p>
- * <p>类详细介绍</p>
+ * <p>用户的详细信息 实体类</p>
+ * <p>有些场景下可能不会使用全部的信息，所以有不同的参数的构造方法；
+ * 1. 当用户登陆成功，会创建此对象，放到session中；
+ * 2. 访问用户个人信息页面，会创建此类，封装一些信息</p>
  * @className UserInfo
  * @author: Mango
  * @date: 2020-09-08 10:50

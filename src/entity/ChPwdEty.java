@@ -2,7 +2,7 @@ package entity;
 
 /**
  * @version 1.0
- * <p>更改密码时使用的类，存在旧密码和新密码</p>
+ * <p>更改密码时使用的类，存在旧密码和新密码 实体类</p>
  * <p>类详细介绍</p>
  * @className ChangePwd
  * @author: Mango

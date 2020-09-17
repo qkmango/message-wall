@@ -15,7 +15,7 @@ import java.io.IOException;
 /**
  * @version 1.0
  * @Description: //TODO
- * <p>更改密码</p>
+ * <p>更改用户密码 控制层</p>
  * <p>类详细介绍</p>
  * @className ChpwdCtrl
  * @author: Mango

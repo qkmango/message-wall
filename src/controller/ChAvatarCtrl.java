@@ -16,7 +16,7 @@ import java.io.IOException;
 
 /**
  * @version 1.0
- * <p>更新头像的控制类</p>
+ * <p>更新用户头像的 控制类</p>
  * <p>类详细介绍</p>
  * @className ChAvatarCtrl
  * @author: Mango

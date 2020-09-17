@@ -17,7 +17,7 @@ import java.io.IOException;
 /**
  * @version 1.0
  * @Description:
- * <p>用户注册控制层</p>
+ * <p>用户注册 控制层</p>
  * <p>类详细介绍</p>
  * @className RegisterCtrl
  * @author: Mango

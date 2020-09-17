@@ -11,7 +11,7 @@ import java.io.IOException;
 /**
  * @version 1.0
  * @Description: //TODO
- * <p>类简介</p>
+ * <p>用户退出登陆 控制兼模型层</p>
  * <p>类详细介绍</p>
  * @className Logout
  * @author: Mango
@@ -26,7 +26,6 @@ public class Logout extends HttpServlet {
         HttpSession session = request.getSession(false);
         if ( session != null) {
             session.invalidate();
-
         }
 
         response.sendRedirect(request.getContextPath()+"/messagewall");

@@ -16,7 +16,7 @@ import java.io.IOException;
 
 /**
  * @version 1.0
- * <p>message详细信息</p>
+ * <p>message详细信息 控制层</p>
  * <p>类详细介绍</p>
  * @className DetMessageCtrl
  * @author: Mango

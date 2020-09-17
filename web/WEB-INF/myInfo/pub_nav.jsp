@@ -9,7 +9,7 @@
 
 <div class="nav">
     <span><a href="<%=request.getContextPath()%>/myinfo?info=base">基本信息</a></span>
-    <span><a href="">我的留言</a></span>
+    <span><a href="<%=request.getContextPath()%>/myinfo?info=messagelist">我的留言</a></span>
     <span><a href="<%=request.getContextPath()%>/myinfo?info=chavatar">更换头像</a></span>
     <span><a href="<%=request.getContextPath()%>/myinfo?info=chpwd">更改密码</a></span>
 </div>

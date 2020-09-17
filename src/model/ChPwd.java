@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 /**
  * @version 1.0
- * <p>更改密码的实体类</p>
+ * <p>更改密码的 实体类</p>
  * <p>类详细介绍</p>
  * @className Chpwd
  * @author: Mango
@@ -40,15 +40,17 @@ public class ChPwd {
             conn.commit();
 
 
-            //如果查询结果集中有一行数据说明email和password匹配，是否可登陆的表级改为true
+            //如果查询结果集中有一行数据说明email和password匹配，并且已更新，标志改为true
             if (row == 1) {
                 flag = true;
             }
         } catch (SQLException throwables) {
-            try {
-                conn.rollback();
-            } catch (SQLException e) {
-                e.printStackTrace();
+            if(conn!=null) {
+                try {
+                    conn.rollback();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
             throwables.printStackTrace();
         } finally {

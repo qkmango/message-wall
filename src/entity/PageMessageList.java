@@ -5,7 +5,7 @@ import java.util.LinkedList;
 /**
  * @version 1.0
  * <p>message分页</p>
- * <p>类详细介绍</p>
+ * <p>一个此类表示一个分页中所有的message，以及分页的一些信息</p>
  * @className PageMessageList
  * @author: Mango
  * @date: 2020-09-16 17:04
@@ -13,16 +13,18 @@ import java.util.LinkedList;
 public class PageMessageList {
     private int pageNum = 1;            //查询的页数(第几页)
     private int index = 0;              //查询的第一条下标（供SQL语句使用）
-    private final int pageSize = 8;    //查询的每页条数
+    private int pageSize = 8;    //查询的每页条数
     private int allRowCount;            //数据库中总条数
     private LinkedList<MessageInfo> messageList = new LinkedList<>();
 
-    public PageMessageList() {
-    }
-
-    public PageMessageList(int pageNum) {
+    public PageMessageList(int pageNum, int pageSize) {
         this.pageNum = pageNum;
+        this.pageSize = pageSize;
     }
+    //
+    // public PageMessageList(int pageNum) {
+    //     this.pageNum = pageNum;
+    // }
 
     public int getPageNum() {
         if (pageNum<=0) {
