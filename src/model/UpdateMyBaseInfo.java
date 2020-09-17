@@ -9,8 +9,7 @@ import java.sql.SQLException;
 
 /**
  * @version 1.0
- * <p>更改我的基本信息模型层</p>
- * <p>类详细介绍</p>
+ * <p>更新我的基本信息 模型层</p>
  * @className UpdateMyInfo
  * @author: Mango
  * @date: 2020-09-10 15:16

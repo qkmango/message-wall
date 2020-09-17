@@ -9,8 +9,7 @@ import java.sql.SQLException;
 
 /**
  * @version 1.0
- * @Description: //TODO
- * <p>类简介</p>
+ * <p>获取用户信息</p>
  * <p>类详细介绍</p>
  * @className GetUserInfoFromUid
  * @author: Mango
@@ -18,6 +17,11 @@ import java.sql.SQLException;
  */
 public class UserInfoUtils {
 
+    /**
+     * 通过用户的uid来获取用户的所有信息（除密码）
+     * @param uid 用户的uid
+     * @return entity.UserInfo 用户信息对象
+     */
     public static UserInfo getUserInfoFromUid(int uid) {
 
         Connection conn = null;

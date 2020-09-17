@@ -12,7 +12,7 @@ import java.util.LinkedList;
 
 /**
  * @version 1.0
- * <p>类简介</p>
+ * <p>获取Message的 模型层</p>
  * <p>获取留言的模型</p>
  * @className Message
  * @author: Mango
@@ -21,10 +21,10 @@ import java.util.LinkedList;
 public class Message {
 
     /**
-     * 留言信息集合
-     * <p>此方法查询数据库返回留言信息集合</p>
+     * 获取所有留言信息分页集合
+     * <p>此方法为网站主页展示message所使用，此方法查询数据库返回留言信息集合分页对象</p>
      * @param
-     * @return 返回一个留言信息集合
+     * @return 返回一个留言信息分页集合对象PageMessageList
      */
     public static PageMessageList pageMessageListAll(int pageNum) {
 
@@ -82,8 +82,8 @@ public class Message {
 
 
     /**
-     * 留言信息集合
-     * <p>此方法通过uid作为条件查询数据库返回留言信息集合</p>
+     * 通过uid获取留言信息分页集合
+     * <p>此方法为个人信息页面展示个人所发布的message所使用，此方法通过uid作为条件查询数据库返回留言信息集合</p>
      * @param
      * @return 返回一个留言信息集合
      */

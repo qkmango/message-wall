@@ -44,6 +44,8 @@ public class LoginCtrl extends HttpServlet {
         UserInfo user = Login.canLogin(userLRInfo);
 
         if(user != null){
+
+            //返回的用户信息类UserInfo类实例对象添加到session范围中，此UserInfo仅包含用户的uid,nickname,sex
             HttpSession session = request.getSession(true);
             session.setAttribute("user",user);
             response.getWriter().write("/MessageWall/messagewall");

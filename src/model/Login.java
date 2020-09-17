@@ -12,7 +12,7 @@ import java.sql.SQLException;
 /**
  * @version 1.0
  * @Description:
- * <p>登陆类</p>
+ * <p>登陆类 模型层</p>
  * <p>判断用户是否可登陆的类，提供了canLogin()静态静态方法判断是否可登陆</p>
  * @className LoginServlet
  * @author: Mango
@@ -24,7 +24,7 @@ public class Login {
      * 判断用户是否可登陆
      * <p>查询数据库判断用户是否可登陆</p>
      * @param userLRInfo 用户登陆信息类
-     * @return 如果email和password匹配则返回用户详细信息封装类UserInfo，否则返回null；
+     * @return 如果email和password匹配则返回用户信息封装类UserInfo，此构造方法仅包含用户的uid,nickname,sex；否则返回null；
      */
     public static UserInfo canLogin(UserLRInfo userLRInfo) {
         Connection conn = null;
