@@ -34,7 +34,8 @@ public class Message {
         LinkedList<MessageInfo> messageList = pageMessageList.getMessageList();
 
         Connection conn = null;
-        PreparedStatement ps = null;
+        PreparedStatement psQuitList = null;    //分页查询的ps
+        PreparedStatement psQuitCount = null;   //获取记录条数的ps
         ResultSet rs = null;
         int count = -1;
 
@@ -43,9 +44,9 @@ public class Message {
             conn.setAutoCommit(true);
 
             //分页查询数据
-            ps = conn.prepareStatement("select SQL_CALC_FOUND_ROWS u.uid,m.mid,m.target,m.date,m.msg,m.color,m.anony,u.nickname from message m LEFT JOIN user u on m.uid=u.uid order by m.mid desc limit ?,8");
-            ps.setInt(1,pageMessageList.getIndex());
-            rs = ps.executeQuery();
+            psQuitList = conn.prepareStatement("select SQL_CALC_FOUND_ROWS u.uid,m.mid,m.target,m.date,m.msg,m.color,m.anony,u.nickname from message m LEFT JOIN user u on m.uid=u.uid order by m.mid desc limit ?,8");
+            psQuitList.setInt(1,pageMessageList.getIndex());
+            rs = psQuitList.executeQuery();
             while (rs.next()) {
                 messageList.add(new MessageInfo(
                         rs.getInt("mid"),
@@ -60,8 +61,8 @@ public class Message {
             }
 
             //获取总条数，此函数FOUND_ROWS()可以查询到上条语句如果不使用limit所返回的条数
-            ps = conn.prepareStatement("select FOUND_ROWS() count");
-            rs = ps.executeQuery();
+            psQuitCount = conn.prepareStatement("select FOUND_ROWS() count");
+            rs = psQuitCount.executeQuery();
             while (rs.next()) {
                 count = rs.getInt("count");
             }
@@ -72,7 +73,8 @@ public class Message {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } finally {
-            JDBCUtils.closeAll(conn,ps,rs);
+            JDBCUtils.closeAll(conn,psQuitList,rs);
+            JDBCUtils.closeStatement(psQuitCount);
         }
 
         return pageMessageList;
@@ -95,7 +97,8 @@ public class Message {
         LinkedList<MessageInfo> messageList = pageMessageList.getMessageList();
 
         Connection conn = null;
-        PreparedStatement ps = null;
+        PreparedStatement psQuitList = null;    //分页查询的ps
+        PreparedStatement psQuitCount = null;   //获取记录条数的ps
         ResultSet rs = null;
         int count = -1;
 
@@ -104,10 +107,10 @@ public class Message {
             conn.setAutoCommit(true);
 
             //分页查询数据
-            ps = conn.prepareStatement("select SQL_CALC_FOUND_ROWS u.uid,m.mid,m.target,m.date,m.msg,m.color,m.anony,u.nickname from message m LEFT JOIN user u on m.uid=u.uid where m.uid=? order by m.mid desc limit ?,15");
-            ps.setInt(1,uid);
-            ps.setInt(2,pageMessageList.getIndex());
-            rs = ps.executeQuery();
+            psQuitList = conn.prepareStatement("select SQL_CALC_FOUND_ROWS u.uid,m.mid,m.target,m.date,m.msg,m.color,m.anony,u.nickname from message m LEFT JOIN user u on m.uid=u.uid where m.uid=? order by m.mid desc limit ?,15");
+            psQuitList.setInt(1,uid);
+            psQuitList.setInt(2,pageMessageList.getIndex());
+            rs = psQuitList.executeQuery();
             while (rs.next()) {
                 messageList.add(new MessageInfo(
                         rs.getInt("mid"),
@@ -122,19 +125,18 @@ public class Message {
             }
 
             //获取总条数，此函数FOUND_ROWS()可以查询到上条语句如果不使用limit所返回的条数
-            ps = conn.prepareStatement("select FOUND_ROWS() count");
-            rs = ps.executeQuery();
+            psQuitCount = conn.prepareStatement("select FOUND_ROWS() count");
+            rs = psQuitCount.executeQuery();
             while (rs.next()) {
                 count = rs.getInt("count");
             }
-            // System.out.println("count = "+count);
-
             pageMessageList.setAllRowCount(count);
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } finally {
-            JDBCUtils.closeAll(conn,ps,rs);
+            JDBCUtils.closeAll(conn,psQuitList,rs);
+            JDBCUtils.closeStatement(psQuitCount);
         }
 
         return pageMessageList;
