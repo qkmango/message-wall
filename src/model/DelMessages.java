@@ -45,7 +45,6 @@ public class DelMessages {
             for (int i = 1; i<=split.length; i++) {
                 ps.setInt(i,Integer.parseInt(split[i-1]));
             }
-            ps.setString(1,mids);
             row = ps.executeUpdate();
 
 
