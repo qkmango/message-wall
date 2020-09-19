@@ -1,8 +1,6 @@
 package model;
 
 import Utils.JDBCUtils;
-import entity.MessageInfo;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
