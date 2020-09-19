@@ -10,7 +10,6 @@
         UserInfo userInfo = (UserInfo)request.getAttribute("userInfo");
         //(其他用户的uid，查看此用户的详细信息页面使用)
         int uid = Integer.parseInt(request.getParameter("uid"));
-        // int uid = userInfo.getUid();
     %>
 </head>
 <body>
@@ -57,11 +56,13 @@
             </div>
             <div>
                 <span>QQ</span>
-                <span><%=userInfo.getQq()=="-1"?"隐藏":userInfo.getQq()%></span>
+<%--                先判断是否被用户隐藏此条信息，然后再判断是否为空""，如果为空字符串，会影响前端布局，所以如果为空的话设置为显示为"空"--%>
+                <span><%=userInfo.getQq()=="-1"?"隐藏":(userInfo.getQq()==""?"空":userInfo.getQq())%></span>
             </div>
             <div>
                 <span>电话</span>
-                <span><%=userInfo.getTel()=="-1"?"隐藏":userInfo.getTel()%></span>
+<%--                先判断是否被用户隐藏此条信息，然后再判断是否为空""，如果为空字符串，会影响前端布局，所以如果为空的话设置为显示为"空"--%>
+                <span><%=userInfo.getTel()=="-1"?"隐藏":(userInfo.getTel()==""?"空":userInfo.getTel())%></span>
             </div>
         </form>
     </div>
