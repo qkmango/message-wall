@@ -142,4 +142,64 @@ public class Message {
         return pageMessageList;
 
     }
+
+
+
+    /**
+     * 通过uid获取非匿名的留言信息分页集合
+     * <p>此方法为在访问其他用户详情信息页面的留言message时使用，此方法通过uid、anony作为条件查询数据库返回留言信息集合</p>
+     * @param
+     * @return 返回一个留言信息集合
+     */
+    public static PageMessageList pageMessageListFromUidWhereNotAnony(int pageNum, int uid) {
+
+
+        //默认在用户个人信息页面中获取其发布的message，默认每页有15个message
+        PageMessageList pageMessageList = new PageMessageList(pageNum, 15);
+        LinkedList<MessageInfo> messageList = pageMessageList.getMessageList();
+
+        Connection conn = null;
+        PreparedStatement psQuitList = null;    //分页查询的ps
+        PreparedStatement psQuitCount = null;   //获取记录条数的ps
+        ResultSet rs = null;
+        int count = -1;
+
+        try {
+            conn = JDBCUtils.getConnection();
+            conn.setAutoCommit(true);
+
+            //分页查询数据
+            psQuitList = conn.prepareStatement("select SQL_CALC_FOUND_ROWS m.mid,m.target,m.date,m.msg from message m LEFT JOIN user u on m.uid=u.uid where m.uid=? and anony=1 order by m.mid desc limit ?,15");
+            psQuitList.setInt(1,uid);
+            psQuitList.setInt(2,pageMessageList.getIndex());
+            rs = psQuitList.executeQuery();
+            while (rs.next()) {
+                messageList.add(new MessageInfo(
+                        rs.getInt("mid"),
+                        rs.getString("target"),
+                        rs.getString("date"),
+                        rs.getString("msg")
+                ));
+            }
+
+            //获取总条数，此函数FOUND_ROWS()可以查询到上条语句如果不使用limit所返回的条数
+            psQuitCount = conn.prepareStatement("select FOUND_ROWS() count");
+            rs = psQuitCount.executeQuery();
+            while (rs.next()) {
+                count = rs.getInt("count");
+            }
+            pageMessageList.setAllRowCount(count);
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } finally {
+            JDBCUtils.closeAll(conn,psQuitList,rs);
+            JDBCUtils.closeStatement(psQuitCount);
+        }
+
+        return pageMessageList;
+
+    }
+
+
 }

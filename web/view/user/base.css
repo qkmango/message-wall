@@ -1,0 +1,100 @@
+.userinfo {
+    float: left;
+    font-size: 0;
+    width: 70%;
+}
+
+/* 基本信息字体颜色 */
+.basicinfo,
+.basicinfo input[type="text"],
+.basicinfo input[type="date"],
+.basicinfo input[type="button"],
+select {
+    color: dimgray;
+    font-size: 16px;
+}
+
+
+.basicinfo {
+    padding: 20px;
+}
+
+.basicinfo>div {
+    margin-bottom: 10px;
+}
+
+
+.basicinfo>div>span {
+    height: 30px;
+    line-height: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: inline-block;
+    background-color: rgba(171,171,171,.1);
+    /*font-size: 16px;*/
+}
+
+.basicinfo>div>span:first-child {
+    width: 100px;
+}
+
+.basicinfo>div>span:nth-child(2) {
+    width: 250px;
+}
+
+.basicinfo>div>span:nth-child(3) {
+    width: 100px;
+}
+
+
+/*input[type="date"] {*/
+/*    background: none;*/
+/*}*/
+
+/*input[type="button"] {*/
+/*    width: 110px;*/
+/*    height: 40px;*/
+/*    background-color: #FE7300;*/
+/*    outline: none;*/
+/*    border: none;*/
+/*}*/
+
+/*.basicinfo>div>span,*/
+/*input[type="checkbox"]{*/
+/*    vertical-align: middle;*/
+/*}*/
+
+/*.basicinfo>div>span>input[type="text"] {*/
+/*    background: none;*/
+/*    outline: none;*/
+/*}*/
+
+/*.basicinfo input[type="text"],*/
+/*.basicinfo input[type="date"]{*/
+/*    height: 22px;*/
+/*    width: 100%;*/
+/*    margin-top: 4px;*/
+/*    border: none;*/
+/*    border-bottom: 1px solid white;*/
+/*}*/
+
+/*input[type="checkbox"] {*/
+/*    width: 14px;*/
+/*    margin-top: 8px;*/
+/*}*/
+
+/*select {*/
+/*    background: none;*/
+/*    width: 50%;*/
+/*    height: 30px;*/
+/*    border: none;*/
+/*}*/
+
+/*select>option{*/
+/*    background-color: rgba(171,171,171,.1);*/
+/*}*/
+
+/*基本信息的nav导航文字：基本信息*/
+.nav>span:first-child {
+    background-color: dimgray;
+}

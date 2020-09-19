@@ -67,6 +67,23 @@ public class MessageInfo {
         this.anony = anony;
     }
 
+
+    /**
+     * 部分参数的构造方法，供在查看其他用户的详细信息页面时查看message时所使用
+     * <p>查看其他用户的MessageList时，部分信息不需要，所以使用部分参数的构造方法</p>
+     * @param mid
+     * @param target
+     * @param date
+     * @param msg 参数说明
+     * @return
+     */
+    public MessageInfo(int mid, String target, String date, String msg) {
+        this.mid = mid;
+        this.target = target;
+        this.date = date;
+        this.msg = msg;
+    }
+
     public int getMid() {
         return mid;
     }
