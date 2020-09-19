@@ -1,41 +1,6 @@
 
 $(function() {
-	
-	
-	// // 验证是否为有效的email的函数，返回boolean值
-	// function isValidEmail(str) {
-	// 	if(/(^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$)/.test(str)){
-	// 	　　return true;
-	// 	} else {
-	// 		return false;
-	// 	}
-	// }
-	
-	// 判断密码是否合法
-	// 长度6-20个字符，包括大写字母、小写字母、数字、下划线至少两种
-	// function isValidPassword(str) {
-	// 	if(str.length<6||str.length>20){
-	// 	  return false;
-	// 	}
-	// 	if(/[^a-zA-Z0-9_]/.test(str)){
-	// 	  return false;
-	// 	}
-	// 	if(/(^[a-z]+$|^[A-Z]+$|^\d+$|^_+$)/.test(str)){
-	// 	  return false;
-	// 	}
-	// 	return true;
-	// }
-	
-	// // 判断两个值是否相等
-	// function isEqual(str1,str2) {
-	// 	if(str1 === str2) {
-	// 		return true;
-	// 	} else {
-	// 		return false;
-	// 	}
-	// }
-	
-	
+
 	// 检查Email并且显示错误提示信息
 	function checkEmail(str) {
 		if(isValidEmail(str)) {
@@ -70,11 +35,11 @@ $(function() {
 
 	//判断昵称是否合法
 	function checkNickname(str) {
-		if (str.length >= 4 & str.length <=10) {
+		if (str.length >= 2 & str.length <=10) {
 			nickname_errorTip.innerText = "";
 			return true;
 		} else {
-			nickname_errorTip.innerText = "确保用户名长度在[4,20]之间";
+			nickname_errorTip.innerText = "确保用户名长度在[2,10]之间";
 			return false
 		}
 	}

@@ -38,7 +38,7 @@ $(function() {
 	}
 
 	function checkNickname(nickname) {
-		if (checkString(nickname,4,10,false,"昵称")) {
+		if (checkString(nickname,2,10,false,"昵称")) {
 			return true;
 		}
 		return false;
