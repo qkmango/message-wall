@@ -9,7 +9,7 @@
 <%@ page session="false" %>
 <html lang="zh-CN">
 <head>
-    <title>个人信息</title>
+    <title>更改头像</title>
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/pub/reset.css"/>
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/view/myInfo/style.css"/>
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/view/myInfo/chpwd.css"/>

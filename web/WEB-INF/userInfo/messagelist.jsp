@@ -5,7 +5,7 @@
 <%@ page session="false" %>
 <html lang="zh-CN">
 <head>
-    <title>个人信息</title>
+    <title>TA的留言</title>
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/pub/reset.css"/>
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/view/user/style.css"/>
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/view/user/messagelist.css"/>

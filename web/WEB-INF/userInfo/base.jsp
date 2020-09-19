@@ -2,12 +2,14 @@
 <%@ page session="false" %>
 <html lang="zh-CN">
 <head>
-    <title>个人信息</title>
+    <title>TA的信息</title>
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/pub/reset.css"/>
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/view/user/style.css"/>
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/view/user/base.css"/>
     <%
         UserInfo userInfo = (UserInfo)request.getAttribute("userInfo");
+        //用户某些信息是否隐藏
+        char[] hide = userInfo.getHide().toCharArray();
         //(其他用户的uid，查看此用户的详细信息页面使用)
         int uid = Integer.parseInt(request.getParameter("uid"));
     %>
@@ -38,13 +40,13 @@
             </div>
             <div>
                 <span>注册邮箱</span>
-                <span><%=userInfo.getEmail()=="-1"?"隐藏":userInfo.getEmail()%></span>
+                <span><%=hide[0]=='0'?"隐藏":userInfo.getEmail()%></span>
             </div>
             <div>
                 <span>性别</span>
-<%--                先判断此信息是否为隐藏信息，隐藏信息在后台已被过滤，值为-1或"-1"
+<%--                先判断此信息是否为隐藏信息
                     如果不是隐藏信息，在判断是男还是女--%>
-                <span><%=userInfo.getSex()==-1?"隐藏":(userInfo.getSex()==0?"女":"男")%></span>
+                <span><%=hide[1]=='0'?"隐藏":(userInfo.getSex()==0?"女":"男")%></span>
             </div>
             <div>
                 <span>注册日期</span>
@@ -52,17 +54,17 @@
             </div>
             <div>
                 <span>生日</span>
-                <span><%=userInfo.getBirthday()=="-1"?"隐藏":userInfo.getBirthday()%></span>
+                <span><%=hide[2]=='0'?"隐藏":userInfo.getBirthday()%></span>
             </div>
             <div>
                 <span>QQ</span>
 <%--                先判断是否被用户隐藏此条信息，然后再判断是否为空""，如果为空字符串，会影响前端布局，所以如果为空的话设置为显示为"空"--%>
-                <span><%=userInfo.getQq()=="-1"?"隐藏":(userInfo.getQq()==""?"空":userInfo.getQq())%></span>
+                <span><%=hide[3]=='0'?"隐藏":(userInfo.getQq()==""?"空":userInfo.getQq())%></span>
             </div>
             <div>
                 <span>电话</span>
 <%--                先判断是否被用户隐藏此条信息，然后再判断是否为空""，如果为空字符串，会影响前端布局，所以如果为空的话设置为显示为"空"--%>
-                <span><%=userInfo.getTel()=="-1"?"隐藏":(userInfo.getTel()==""?"空":userInfo.getTel())%></span>
+                <span><%=hide[4]=='0'?"隐藏":(userInfo.getTel()==""?"空":userInfo.getTel())%></span>
             </div>
         </form>
     </div>

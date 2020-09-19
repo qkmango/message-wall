@@ -36,7 +36,7 @@ public class UserInfoCtrl extends HttpServlet {
             UserInfo userinfo = UserInfoUtils.getUserInfoFromUid(Integer.parseInt(uid));
             System.out.println(userinfo);
             //过滤其他用户信息，将设置为对外隐藏的信息过滤掉，将其设置为-1或"-1"
-            userinfo = UserInfoHideFilter.toFilter(userinfo);
+            // userinfo = UserInfoHideFilter.toFilter(userinfo);
 
 
             request.setAttribute("userInfo",userinfo);
