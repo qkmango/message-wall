@@ -21,7 +21,7 @@ public class UserInfo {
     private String regdate;
     //生日
     private String birthday;
-    //头像 base64字符串形式
+    //头像 base64字符串形式,或默认的一些头像的代号
     private String avatar;
     //QQ号
     private String qq;

@@ -33,6 +33,7 @@ public class UserInfoUtils {
             conn = JDBCUtils.getConnection();
             conn.setAutoCommit(true);
 
+            //当头像为null时，将其值设置为默认的头像的代号
             ps = conn.prepareStatement("select uid,email,nickname,sex,regdate,birthday,ifnull(avatar,'#icon-icon-test') avatar,qq,tel,hide from user where uid=?");
             ps.setInt(1, uid);
             rs = ps.executeQuery();
