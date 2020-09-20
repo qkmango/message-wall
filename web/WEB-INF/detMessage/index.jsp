@@ -25,9 +25,17 @@
     <span>消息MID</span><span><%=detMessage.getMid()%></span><br />
     <span>收信对象</span><span><%=detMessage.getTarget()%></span><br />
     <span>作者昵称</span><span><%=detMessage.getAnony()==0?"匿名对象":detMessage.getNickname()%></span><br />
-    <span>作者主页</span><a href="userinfo?uid=<%=detMessage.getUid()%>&info=base">主页详细信息</a><br />
+    <span>作者主页</span><a href=<%
+    boolean anony = detMessage.getAnony()==0;
+    if (anony) {
+        out.write("'#'");
+    } else {
+        out.write("'userinfo?uid="+detMessage.getUid()+"&info=base'");
+    }
+    %>><%=anony?"匿名对象":"作者详细信息页"%></a><br />
     <span>写信时间</span><span><%=detMessage.getDate()%></span>
 </div>
+
 
 
 <div class="panel panel-style-<%=detMessage.getColor()%>" >
