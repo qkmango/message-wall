@@ -44,7 +44,7 @@ public class Message {
             conn.setAutoCommit(true);
 
             //分页查询数据
-            psQuitList = conn.prepareStatement("select SQL_CALC_FOUND_ROWS u.uid,m.mid,m.target,m.date,left(m.msg,30) msg,m.color,m.anony,u.nickname from message m LEFT JOIN user u on m.uid=u.uid order by m.mid desc limit ?,10");
+            psQuitList = conn.prepareStatement("select SQL_CALC_FOUND_ROWS u.uid,m.mid,m.target,m.date,left(m.msg,28) msg,m.color,m.anony,u.nickname from message m LEFT JOIN user u on m.uid=u.uid order by m.mid desc limit ?,10");
             psQuitList.setInt(1,pageMessageList.getIndex());
             rs = psQuitList.executeQuery();
             while (rs.next()) {
@@ -107,7 +107,7 @@ public class Message {
             conn.setAutoCommit(true);
 
             //分页查询数据
-            psQuitList = conn.prepareStatement("select SQL_CALC_FOUND_ROWS u.uid,m.mid,m.target,m.date,left(m.msg,30) msg,m.color,m.anony,u.nickname from message m LEFT JOIN user u on m.uid=u.uid where m.uid=? order by m.mid desc limit ?,15");
+            psQuitList = conn.prepareStatement("select SQL_CALC_FOUND_ROWS u.uid,m.mid,m.target,m.date,left(m.msg,28) msg,m.color,m.anony,u.nickname from message m LEFT JOIN user u on m.uid=u.uid where m.uid=? order by m.mid desc limit ?,15");
             psQuitList.setInt(1,uid);
             psQuitList.setInt(2,pageMessageList.getIndex());
             rs = psQuitList.executeQuery();
@@ -169,7 +169,7 @@ public class Message {
             conn.setAutoCommit(true);
 
             //分页查询数据
-            psQuitList = conn.prepareStatement("select SQL_CALC_FOUND_ROWS m.mid,m.target,m.date,left(m.msg,30) msg from message m LEFT JOIN user u on m.uid=u.uid where m.uid=? and anony=1 order by m.mid desc limit ?,15");
+            psQuitList = conn.prepareStatement("select SQL_CALC_FOUND_ROWS m.mid,m.target,m.date,left(m.msg,28) msg from message m LEFT JOIN user u on m.uid=u.uid where m.uid=? and anony=1 order by m.mid desc limit ?,15");
             psQuitList.setInt(1,uid);
             psQuitList.setInt(2,pageMessageList.getIndex());
             rs = psQuitList.executeQuery();
@@ -228,7 +228,7 @@ public class Message {
 
             //分页查询数据
             //查询的msg最大长度为30
-            psQuitList = conn.prepareStatement("select SQL_CALC_FOUND_ROWS u.uid,m.mid,m.target,m.date,left(m.msg,30) msg,m.color,m.anony,u.nickname from message m LEFT JOIN user u on m.uid=u.uid where m.msg like ? order by m.mid desc limit ?,30");
+            psQuitList = conn.prepareStatement("select SQL_CALC_FOUND_ROWS u.uid,m.mid,m.target,m.date,left(m.msg,28) msg,m.color,m.anony,u.nickname from message m LEFT JOIN user u on m.uid=u.uid where m.msg like ? order by m.mid desc limit ?,30");
             psQuitList.setString(1,"%"+search+"%");
             psQuitList.setInt(2,pageMessageList.getIndex());
             rs = psQuitList.executeQuery();
