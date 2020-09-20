@@ -77,6 +77,8 @@
         <div class="indexes">
             <a href="messagewall?page=<%=pageMessageList.getBackPageNum()%>" id="back">上一页</a>
             <a href="messagewall?page=<%=pageMessageList.getNextPageNum()%>" id="next">下一页</a>
+            <a href="messagewall?page=1" id="first">首页</a>
+            <a href="messagewall?page=<%=pageMessageList.getAllPageCount()%>" id="last">尾页</a>
             <div class="index_info">
                 <div>当前页：<%=pageMessageList.getPageNum()%></div>
                 <div>总页数：<%=pageMessageList.getAllPageCount()%></div>
@@ -102,5 +104,6 @@
 
     </div>
 </div>
+<%@include file="/pub/footer/index.jsp"%>
 </body>
 </html>

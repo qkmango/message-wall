@@ -7,8 +7,8 @@
 <head>
     <title>TA的留言</title>
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/pub/reset.css"/>
-    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/view/user/style.css"/>
-    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/view/user/messagelist.css"/>
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/view/userInfo/style.css"/>
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/view/userInfo/messagelist.css"/>
     <%
         int uid = Integer.parseInt(request.getParameter("uid"));
         UserInfo userInfo = (UserInfo)request.getAttribute("userInfo");

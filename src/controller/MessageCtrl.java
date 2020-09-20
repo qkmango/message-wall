@@ -24,7 +24,6 @@ public class MessageCtrl extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         request.setCharacterEncoding("UTF-8");
-        // String page1 = request.getParameter("page");
         String page = request.getParameter("page");
         int pageNum = 1;
         if (page != null) {

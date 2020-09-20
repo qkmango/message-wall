@@ -1,6 +1,6 @@
 html,body {
 	width: 100%;
-	height: 100%;
+	/*height: 100%;*/
 }
 
 
@@ -30,7 +30,7 @@ body {
 
 .main {
 	width: 75%;
-	height: 100%;
+	height: 1000px;
 	/*background-color: #E1E4E8;*/
 	margin: auto;
 	margin-top: 20px;
@@ -49,19 +49,22 @@ body {
 	float: left;
 	width: 200px;
 	height: 100%;
-	border-radius: 5px;
-	border: 1px solid #6A737D;
-	padding: 0;
+	padding: 2px 5px 2px 5px;
+	font-weight: bold;
 	outline: none;
 	box-sizing: border-box;
+	border: 2px solid #3A3632;
 }
 .search>form>input[type="submit"] {
 	float: left;
 	width: 50px;
 	height: 100%;
-	border: 1px solid #6A737D;
 	outline: none;
 	box-sizing: border-box;
+	font-weight: bold;
+	border: none;
+	color: white;
+	background-color: #3A3632
 }
 
 .center {
@@ -82,6 +85,7 @@ body {
 	display: inline-block;
 	width: 100%;
 	height: 50px;
+	margin-bottom: 10px;
 }
 
 .add {
@@ -97,125 +101,17 @@ body {
 .list {
 }
 
-.panel {
-	float: left;
-	width: 48%;
-	margin-top: 20px;
-	border-radius: 5px;
-	border-width: 2px;
-	border-style: solid;
-	overflow: hidden;
-	box-sizing: border-box;
-	background-color: white;
-}
+
 
 /*左边的plane面板设置右边距*/
 .l {
 	margin-right: 4%;
 }
 
-.panel-heading {
-	width: 100%;
-	height: 38px;
-	font-size: 16px;
-	line-height: 38px;
-	padding-left: 10px;
-}
-
-/*每个留言的颜色样式*/
-/*style-1*/
-/*.panel-style-1 {*/
-/*	border-color: #bce8f1;*/
-/*}*/
-/*.panel-heading-style-1 {*/
-/*	background-color: #d9edf7;*/
-/*	color: #31708f;*/
-/*}*/
-
-/*!*style-2*!*/
-/*.panel-style-2 {*/
-/*	border-color: #337ab7;*/
-/*}*/
-/*.panel-heading-style-2 {*/
-/*	background-color: #337ab7;*/
-/*	color: white;*/
-/*}*/
-
-/*!*style-3*!*/
-/*.panel-style-3 {*/
-/*	border-color: #d6e9c6;*/
-/*}*/
-/*.panel-heading-style-3 {*/
-/*	background-color: #dff0d8;*/
-/*	color: #3c763d;*/
-/*}*/
-
-/*!*style-4*!*/
-/*.panel-style-4 {*/
-/*	border-color: #faebcc;*/
-/*}*/
-/*.panel-heading-style-4 {*/
-/*	background-color: #fcf8e3;*/
-/*	color: #8a6d3b;*/
-/*}*/
-/*!*style-5*!*/
-/*.panel-style-5 {*/
-/*	border-color: #ebccd1;*/
-/*}*/
-/*.panel-heading-style-5 {*/
-/*	background-color: #f2dede;*/
-/*	color: #a94442;*/
-/*}*/
-
-
-
-
-
-
-.panel-body {
-	height: 120px;
-	font-size: 14px;
-	line-height: 1.5;
-	padding: 10px;
-	box-sizing: border-box;
-	overflow: hidden;
-}
-
-.panel-foot {
-	height: 30px;
-	padding-left: 20px;
-	padding-right: 20px;
-}
-.panel-foot>a {
-	float: left;
-	font-size: 14px;
-	line-height: 30px;
-}
-.panel-foot>a>button {
-	border-radius: 3px;
-	border: 1px solid #6A737D;
-	padding: 0 5px 0 5px;
-	background-color: initial;
-}
-.panel-foot>a>button:hover {
-	background-color: #E1E4E8;
-}
-
-.panel-foot-info>* {
-	color: #6A737D;
-	font-size: 13px;
-	float: right;
-	line-height: 30px;
-}
-
-.panel-foot-info>span:nth-child(2) {
-	margin-right: 10px;
-}
-
 
 /* 分页索引 */
-#back,#next {
-	margin-top: 20px;
+#back,#next,#first,#last {
+	/* margin-top: 20px; */
 	margin-bottom: 10px;
 	display: inline-block;
 	font-size: 16px;
@@ -252,3 +148,4 @@ body {
 #this_page_index {
 	background-color: #FE7300;
 }
+

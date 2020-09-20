@@ -30,7 +30,7 @@ public class Message {
 
 
         //默认在用户个人信息页面中获取其发布的message，默认每页有15个message
-        PageMessageList pageMessageList = new PageMessageList(pageNum,8);
+        PageMessageList pageMessageList = new PageMessageList(pageNum,10);
         LinkedList<MessageInfo> messageList = pageMessageList.getMessageList();
 
         Connection conn = null;
@@ -44,7 +44,7 @@ public class Message {
             conn.setAutoCommit(true);
 
             //分页查询数据
-            psQuitList = conn.prepareStatement("select SQL_CALC_FOUND_ROWS u.uid,m.mid,m.target,m.date,m.msg,m.color,m.anony,u.nickname from message m LEFT JOIN user u on m.uid=u.uid order by m.mid desc limit ?,8");
+            psQuitList = conn.prepareStatement("select SQL_CALC_FOUND_ROWS u.uid,m.mid,m.target,m.date,m.msg,m.color,m.anony,u.nickname from message m LEFT JOIN user u on m.uid=u.uid order by m.mid desc limit ?,10");
             psQuitList.setInt(1,pageMessageList.getIndex());
             rs = psQuitList.executeQuery();
             while (rs.next()) {
