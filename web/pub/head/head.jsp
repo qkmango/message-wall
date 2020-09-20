@@ -26,7 +26,7 @@
                 UserInfo user = (UserInfo)session.getAttribute("user");
                 String nickname = user.getNickname();
                 String contextPath = request.getContextPath();
-                out.write("<a href=myinfo?info=base id=my>");
+                out.write("<a href=myinfo?info=base id=my target='_blank'>");
                 out.write("");
                 out.write("<img src="+contextPath+"/pub/imgs/head/user.svg />");
                 out.write("<span>"+nickname+"</span>");

@@ -31,8 +31,8 @@
 <div class="main">
     <div class="center">
         <div class="search clearfix">
-            <form action="" method="get">
-                <input type="text" />
+            <form action="search" method="get">
+                <input type="text" name="search" />
                 <input type="submit" value="搜索" />
             </form>
         </div>
@@ -54,7 +54,7 @@
                 </div>
                 <div class="panel-body"><%=messageInfo.getMsg()%></div>
                 <div class="panel-foot">
-                    <a href="detmessage?mid=<%=messageInfo.getMid()%>"><button>查看</button></a>
+                    <a href="detmessage?mid=<%=messageInfo.getMid()%>" target="_blank"><button>查看</button></a>
 
                     <span class="panel-foot-info">
                         <span><%=messageInfo.getDate()%></span>

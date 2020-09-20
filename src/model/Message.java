@@ -44,7 +44,7 @@ public class Message {
             conn.setAutoCommit(true);
 
             //分页查询数据
-            psQuitList = conn.prepareStatement("select SQL_CALC_FOUND_ROWS u.uid,m.mid,m.target,m.date,m.msg,m.color,m.anony,u.nickname from message m LEFT JOIN user u on m.uid=u.uid order by m.mid desc limit ?,10");
+            psQuitList = conn.prepareStatement("select SQL_CALC_FOUND_ROWS u.uid,m.mid,m.target,m.date,left(m.msg,30) msg,m.color,m.anony,u.nickname from message m LEFT JOIN user u on m.uid=u.uid order by m.mid desc limit ?,10");
             psQuitList.setInt(1,pageMessageList.getIndex());
             rs = psQuitList.executeQuery();
             while (rs.next()) {
@@ -107,7 +107,7 @@ public class Message {
             conn.setAutoCommit(true);
 
             //分页查询数据
-            psQuitList = conn.prepareStatement("select SQL_CALC_FOUND_ROWS u.uid,m.mid,m.target,m.date,m.msg,m.color,m.anony,u.nickname from message m LEFT JOIN user u on m.uid=u.uid where m.uid=? order by m.mid desc limit ?,15");
+            psQuitList = conn.prepareStatement("select SQL_CALC_FOUND_ROWS u.uid,m.mid,m.target,m.date,left(m.msg,30) msg,m.color,m.anony,u.nickname from message m LEFT JOIN user u on m.uid=u.uid where m.uid=? order by m.mid desc limit ?,15");
             psQuitList.setInt(1,uid);
             psQuitList.setInt(2,pageMessageList.getIndex());
             rs = psQuitList.executeQuery();
@@ -169,7 +169,7 @@ public class Message {
             conn.setAutoCommit(true);
 
             //分页查询数据
-            psQuitList = conn.prepareStatement("select SQL_CALC_FOUND_ROWS m.mid,m.target,m.date,m.msg from message m LEFT JOIN user u on m.uid=u.uid where m.uid=? and anony=1 order by m.mid desc limit ?,15");
+            psQuitList = conn.prepareStatement("select SQL_CALC_FOUND_ROWS m.mid,m.target,m.date,left(m.msg,30) msg from message m LEFT JOIN user u on m.uid=u.uid where m.uid=? and anony=1 order by m.mid desc limit ?,15");
             psQuitList.setInt(1,uid);
             psQuitList.setInt(2,pageMessageList.getIndex());
             rs = psQuitList.executeQuery();
@@ -188,6 +188,70 @@ public class Message {
             while (rs.next()) {
                 count = rs.getInt("count");
             }
+            pageMessageList.setAllRowCount(count);
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } finally {
+            JDBCUtils.closeAll(conn,psQuitList,rs);
+            JDBCUtils.closeStatement(psQuitCount);
+        }
+
+        return pageMessageList;
+
+    }
+
+
+
+    /**
+     * 搜索关键字获取所有留言信息分页集合
+     * <p>此方法为搜索message时使用，此方法查询数据库返回留言信息集合分页对象</p>
+     * @param
+     * @return 返回一个留言信息分页集合对象PageMessageList
+     */
+    public static PageMessageList pageMessageListSearchAll(int pageNum, String search) {
+
+
+        //默认在用户个人信息页面中获取其发布的message，默认每页有30个message
+        PageMessageList pageMessageList = new PageMessageList(pageNum,30);
+        LinkedList<MessageInfo> messageList = pageMessageList.getMessageList();
+
+        Connection conn = null;
+        PreparedStatement psQuitList = null;    //分页查询的ps
+        PreparedStatement psQuitCount = null;   //获取记录条数的ps
+        ResultSet rs = null;
+        int count = -1;
+
+        try {
+            conn = JDBCUtils.getConnection();
+            conn.setAutoCommit(true);
+
+            //分页查询数据
+            //查询的msg最大长度为30
+            psQuitList = conn.prepareStatement("select SQL_CALC_FOUND_ROWS u.uid,m.mid,m.target,m.date,left(m.msg,30) msg,m.color,m.anony,u.nickname from message m LEFT JOIN user u on m.uid=u.uid where m.msg like ? order by m.mid desc limit ?,30");
+            psQuitList.setString(1,"%"+search+"%");
+            psQuitList.setInt(2,pageMessageList.getIndex());
+            rs = psQuitList.executeQuery();
+            while (rs.next()) {
+                messageList.add(new MessageInfo(
+                        rs.getInt("mid"),
+                        rs.getInt("uid"),
+                        rs.getString("nickname"),
+                        rs.getString("target"),
+                        rs.getString("date"),
+                        rs.getString("msg"),
+                        rs.getInt("color"),
+                        rs.getInt("anony")
+                ));
+            }
+
+            //获取总条数，此函数FOUND_ROWS()可以查询到上条语句如果不使用limit所返回的条数
+            psQuitCount = conn.prepareStatement("select FOUND_ROWS() count");
+            rs = psQuitCount.executeQuery();
+            while (rs.next()) {
+                count = rs.getInt("count");
+            }
+
             pageMessageList.setAllRowCount(count);
 
         } catch (SQLException throwables) {

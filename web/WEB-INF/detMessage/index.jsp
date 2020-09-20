@@ -32,10 +32,9 @@
     } else {
         out.write("'userinfo?uid="+detMessage.getUid()+"&info=base'");
     }
-    %>><%=anony?"匿名对象":"作者详细信息页"%></a><br />
+    %> <%=anony?"":"target='_blank'"%> ><%=anony?"匿名对象":"作者详细信息页"%></a><br />
     <span>写信时间</span><span><%=detMessage.getDate()%></span>
 </div>
-
 
 
 <div class="panel panel-style-<%=detMessage.getColor()%>" >
