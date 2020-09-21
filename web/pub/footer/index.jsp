@@ -13,7 +13,7 @@
         <img src="<%=request.getContextPath()%>/pub/imgs/head/logo_title.png" />
         <p>qkmango.cn是我的（芒果小洛）在学习Java过程中的实践，这里分享了一些关于我的信息和博客，以及学习记录等等。</p>
         <p>如果你感兴趣或者你也在学习Java，那么可以找我一起学习哦~</p>
-        <p><a href="http://qkmango.cn">个人主站 qkmango.cn</a></p>
+        <p><a href="http://qkmango.cn" target="_blank">个人主站 qkmango.cn</a></p>
         <span>qkmango.top 版权所有</span>
         <a href="http://www.beian.miit.gov.cn/" target="_blank">皖ICP备20002642号</a>
         <span>MessageWall dev version 1.0</span>
