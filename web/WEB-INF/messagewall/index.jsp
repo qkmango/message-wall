@@ -106,4 +106,8 @@
 </div>
 <%@include file="/pub/footer/index.jsp"%>
 </body>
+<script type="text/javascript" >
+    console.log("mango @芒果小洛 qkmango.cn/qkmango.top");
+    console.log("like cj @cz");
+</script>
 </html>
