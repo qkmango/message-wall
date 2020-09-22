@@ -86,21 +86,26 @@ body {
 
 /* 分页索引 */
 #back,#next,#first,#last {
-	/* margin-top: 20px; */
 	margin-bottom: 10px;
 	display: inline-block;
+	font-weight: bold;
 	font-size: 16px;
 	width: 50%;
 	line-height: 40px;
-	background-color: #FE7300;
+	background-color: #3A3632;
 	text-align: center;
 	color: white;
 }
 
+#back:hover,#next:hover,#first:hover,#last:hover {
+	background-color: #FE7300;
+}
+
 .index_info {
 	font-size: 16px;
+	/*font-weight: bold;*/
 	line-height: 20px;
-	background-color: #FE7300;
+	background-color: #3A3632;
 	padding: 5px;
 	color: white;
 }
@@ -113,9 +118,8 @@ body {
 .indexes_ul>a{
 	display: inline-block;
 	padding: 5px;
-	background-color: #0077AA;
-	margin: 5px;
-	/* box-sizing: border-box; */
+	background-color: #3A3632;
+	margin: 5px 5px 5px 0;
 	color: white;
 }
 

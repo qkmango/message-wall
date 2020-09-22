@@ -1,4 +1,6 @@
 input[type="button"] {
+	color: white;
+	font-weight: bold;
     width: 110px;
     height: 40px;
     outline: none;
@@ -25,26 +27,24 @@ input[type="button"] {
 }
 
 .message_list>table {
-	/* max-height: 200px; */
-	background-color: #E7E1CD;
 	width: 100%;
 }
 
 
 .message_list tr:first-child{
 	font-size: 16px;
-	background-color: #0077AA;
+	font-weight: bold;
+	background-color: #3A3632;
 }
 
 
 .message_list tr {
 	text-align: center;
 	line-height: 30px;
-	border: 1px solid black;
 }
 
-.message_list>table td:nth-child(2n) {
-	background-color: #dcdcdc;
+.message_list>table tr:nth-child(2n) {
+	background-color: #e5e5e5;
 }
 
 th {
@@ -53,24 +53,26 @@ th {
 
 
 /* 分页索引 */
-#back,#next {
+#back,#next,#first,#last {
 	margin-top: 10px;
 	float: left;
-	/* margin-bottom: 10px; */
-	/* display: inline-block; */
 	font-size: 16px;
 	width: 10%;
 	line-height: 30px;
-	background-color: #0077AA;
+	background-color: #3A3632;
 	text-align: center;
 	color: white;
+}
+
+#back:hover,#next:hover,#first:hover,#last:hover {
+	background-color: #FE7300;;
 }
 
 .index_info {
 	display: inline-block;
 	font-size: 16px;
 	line-height: 20px;
-	background-color: #0077AA;
+	background-color: #3A3632;
 	padding: 5px;
 	color: white;
 	margin-top: 10px;
@@ -88,8 +90,8 @@ th {
 .indexes_ul>a{
 	display: inline-block;
 	padding: 5px;
-	background-color: #0077AA;
-	margin: 5px;
+	background-color: #3A3632;
+	margin: 5px 5px 5px 0;
 	color: white;
 }
 

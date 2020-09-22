@@ -52,6 +52,8 @@
             <div class="indexes">
                 <a href="userinfo?uid=<%=uid%>&info=messagelist&page=<%=pageMessageList.getBackPageNum()%>" id="back">上一页</a>
                 <a href="userinfo?uid=<%=uid%>&info=messagelist&page=<%=pageMessageList.getNextPageNum()%>" id="next">下一页</a>
+                <a href="userinfo?uid=<%=uid%>&info=messagelist&page=1" id="first">首页</a>
+                <a href="userinfo?uid=<%=uid%>&info=messagelist&page=<%=pageMessageList.getAllPageCount()%>" id="last">尾页</a>
                 <div class="index_info">
                     <span>当前页:<%=pageMessageList.getPageNum()%></span>
                     <span>总页数:<%=pageMessageList.getAllPageCount()%></span>

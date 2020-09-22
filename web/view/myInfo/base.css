@@ -2,24 +2,22 @@
     float: left;
     font-size: 0;
     width: 70%;
-    /*height: 100%;*/
-    /*background-color: dimgray;*/
 }
-
-/*.basicinfo>div {*/
-/*    background-color: rgba(171,171,171,.1);*/
-/*}*/
 
 /* 基本信息字体颜色 */
 .basicinfo,
 .basicinfo input[type="text"],
 .basicinfo input[type="date"],
-.basicinfo input[type="button"],
 select {
     color: dimgray;
     font-size: 16px;
 }
 
+.basicinfo input[type="button"] {
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+}
 
 .basicinfo {
     padding: 20px;

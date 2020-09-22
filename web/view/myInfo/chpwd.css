@@ -1,11 +1,8 @@
 /*更改密码样式*/
 
-/*.chpwd * {*/
-/*    font-size: 16px;*/
-/*}*/
-
 .chpwd input[type="button"] {
-	color: dimgray;
+	color: white;
+	font-weight: bold;
 	font-size: 16px;
 }
 
