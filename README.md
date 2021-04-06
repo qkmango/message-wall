@@ -1,5 +1,5 @@
 # messageWall
-作者：mango @芒果小洛 [qkmango.cn](http://qkmango.cn)/[qkmango.top](http://qkmango.top)
+作者：qkmango @芒果小洛 [qkmango.cn](http://qkmango.cn)
 >表白墙/消息墙/留言墙
 
 #开发环境
